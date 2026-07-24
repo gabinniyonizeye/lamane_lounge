@@ -4,7 +4,7 @@
     <div class="bg-white border-b">
       <div class="container py-8">
         <h1 class="text-4xl font-bold text-dark">Make a Reservation</h1>
-        <p class="text-gray-600 mt-2">Reserve a table at LAMANE Bakery & Coffee</p>
+        <p class="text-gray-600 mt-2">Reserve a table at LAMANE Lounge & Coffee</p>
       </div>
     </div>
 

@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950 text-white">
+  <footer class="bg-gradient-to-br from-dark via-primary/10 to-dark text-white">
     <div class="container py-16">
       <div class="grid gap-12 lg:grid-cols-4 mb-10">
         <div class="space-y-4">
@@ -9,10 +9,10 @@
             </div>
             <div>
               <p class="text-sm uppercase tracking-[0.35em] text-slate-400">LAMANE</p>
-              <p class="text-lg font-semibold text-white">Bakery & Coffee</p>
+              <p class="text-lg font-semibold text-white">Lounge & Coffee</p>
             </div>
           </div>
-          <p class="text-sm leading-7 text-slate-300">Delicious moments with premium bakery and coffee, crafted fresh every day. Taste the warmth and rich ingredients in every order.</p>
+          <p class="text-sm leading-7 text-slate-300">Delicious moments with premium pastries and lounge-style coffee, crafted fresh every day. Taste the warmth and rich ingredients in every order.</p>
         </div>
 
         <div>
@@ -57,7 +57,7 @@
               v-model="email"
               type="email"
               placeholder="Your email"
-              class="w-full rounded-3xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white outline-none placeholder:text-slate-400 focus:border-accent focus:ring-2 focus:ring-accent/10"
+              class="w-full rounded-3xl border border-secondary/20 bg-dark/80 px-4 py-3 text-sm text-white outline-none placeholder:text-slate-400 focus:border-accent focus:ring-2 focus:ring-accent/10"
               required
             />
             <button type="submit" class="w-full btn-primary text-sm">Subscribe</button>

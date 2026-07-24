@@ -1,46 +1,122 @@
 <template>
-  <section class="relative overflow-hidden">
-    <div
-      class="absolute inset-0 bg-cover bg-center"
-      :style="{ backgroundImage: 'linear-gradient(180deg, rgba(44,24,16,0.7), rgba(44,24,16,0.18)), url(https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&h=800&fit=crop)', transform: `translateY(${parallaxOffset}px)` }"
-    >
-      <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-transparent"></div>
+  <section class="relative overflow-hidden bg-black">
+    <!-- Animated Background -->
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-gradient-to-br from-amber-900/20 via-black to-black"></div>
+      <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl"></div>
     </div>
 
-    <div class="container relative z-10 py-28 lg:py-32">
-      <div class="grid gap-10 lg:grid-cols-[1.3fr_auto] lg:items-end">
-        <div class="max-w-2xl text-white">
-          <p class="mb-4 inline-flex rounded-full bg-white/10 px-4 py-2 text-sm font-semibold uppercase tracking-[0.35em] text-white/80">Warm. Fresh. Local.</p>
-          <h1 class="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">A bakery experience that feels luxurious, cozy, and delicious.</h1>
-          <p class="mt-6 max-w-xl text-lg leading-8 text-slate-200">Savor handcrafted pastries, rich coffees and signature meals made with premium ingredients. Designed for taste, speed, and effortless ordering.</p>
+    <!-- Content -->
+    <div class="container relative z-10 py-32 lg:py-40">
+      <div class="grid gap-16 lg:grid-cols-2 lg:items-center">
+        <!-- Left Content -->
+        <div class="max-w-2xl">
+          <!-- Badge -->
+          <div class="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 backdrop-blur-sm">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            <span class="text-sm font-semibold text-amber-300">Premium Bakery & Coffee</span>
+          </div>
 
-          <div class="mt-10 flex flex-wrap gap-4">
-            <router-link to="/shop" class="btn-primary">Order Now</router-link>
-            <router-link to="/menu" class="btn-secondary">Explore the Menu</router-link>
+          <!-- Main Heading -->
+          <h1 class="text-6xl md:text-7xl font-black text-white mb-6 leading-tight">
+            Taste the
+            <span class="bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 bg-clip-text text-transparent">
+              Luxury
+            </span>
+          </h1>
+
+          <!-- Subheading -->
+          <p class="text-xl text-gray-300 mb-8 leading-relaxed max-w-xl">
+            Handcrafted pastries, artisan coffee, and gourmet meals made with premium ingredients. Experience excellence in every bite.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-wrap gap-4 mb-12">
+            <router-link 
+              to="/shop" 
+              class="group px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold rounded-xl hover:shadow-2xl hover:shadow-amber-500/50 transition-all duration-300 flex items-center gap-2"
+            >
+              <span>Order Now</span>
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </router-link>
+            <router-link 
+              to="/menu" 
+              class="px-8 py-4 border-2 border-amber-400/50 text-amber-300 font-bold rounded-xl hover:bg-amber-400/10 transition-all duration-300"
+            >
+              Explore Menu
+            </router-link>
+          </div>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-3 gap-8 pt-8 border-t border-amber-500/20">
+            <div>
+              <p class="text-3xl font-black text-amber-400">500+</p>
+              <p class="text-sm text-gray-400">Happy Customers</p>
+            </div>
+            <div>
+              <p class="text-3xl font-black text-amber-400">50+</p>
+              <p class="text-sm text-gray-400">Menu Items</p>
+            </div>
+            <div>
+              <p class="text-3xl font-black text-amber-400">4.9★</p>
+              <p class="text-sm text-gray-400">Rating</p>
+            </div>
           </div>
         </div>
 
-        <div class="space-y-4 rounded-[2.5rem] border border-white/20 bg-white/10 p-6 shadow-2xl shadow-black/20 backdrop-blur-xl">
-          <div class="rounded-3xl bg-white/10 p-5">
-            <p class="text-sm uppercase tracking-[0.35em] text-slate-200">Chef’s favorite</p>
-            <h2 class="mt-3 text-2xl font-semibold text-white">Lamané Pizza</h2>
-            <p class="mt-2 text-sm text-slate-300">Roasted tomato, mozzarella, pesto drizzle, and seasonal vegetables.</p>
-          </div>
-          <div class="grid gap-4 sm:grid-cols-2">
-            <div class="rounded-3xl bg-white/10 p-5">
-              <p class="text-sm uppercase tracking-[0.35em] text-slate-200">Breakfast</p>
-              <p class="mt-3 text-lg font-semibold text-white">Avocado Toast</p>
+        <!-- Right Content - Featured Items -->
+        <div class="relative">
+          <!-- Floating Cards -->
+          <div class="space-y-6">
+            <!-- Card 1 -->
+            <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-900/40 to-black border border-amber-500/20 p-6 backdrop-blur-xl hover:border-amber-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-500/20">
+              <div class="absolute inset-0 bg-gradient-to-r from-amber-500/0 via-amber-500/0 to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div class="relative z-10">
+                <div class="text-4xl mb-3">☕</div>
+                <h3 class="text-xl font-bold text-white mb-2">Lamacina Coffee</h3>
+                <p class="text-sm text-gray-400 mb-4">Premium espresso blend with rich crema</p>
+                <p class="text-2xl font-bold text-amber-400">4,000 RWF</p>
+              </div>
             </div>
-            <div class="rounded-3xl bg-white/10 p-5">
-              <p class="text-sm uppercase tracking-[0.35em] text-slate-200">Special</p>
-              <p class="mt-3 text-lg font-semibold text-white">Coffee Combo</p>
+
+            <!-- Card 2 -->
+            <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-900/40 to-black border border-amber-500/20 p-6 backdrop-blur-xl hover:border-amber-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-500/20 ml-8">
+              <div class="absolute inset-0 bg-gradient-to-r from-amber-500/0 via-amber-500/0 to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div class="relative z-10">
+                <div class="text-4xl mb-3">🍕</div>
+                <h3 class="text-xl font-bold text-white mb-2">Lamané Pizza</h3>
+                <p class="text-sm text-gray-400 mb-4">Artisan pizza with fresh ingredients</p>
+                <p class="text-2xl font-bold text-amber-400">10,000 RWF</p>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-900/40 to-black border border-amber-500/20 p-6 backdrop-blur-xl hover:border-amber-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-500/20">
+              <div class="absolute inset-0 bg-gradient-to-r from-amber-500/0 via-amber-500/0 to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div class="relative z-10">
+                <div class="text-4xl mb-3">🥐</div>
+                <h3 class="text-xl font-bold text-white mb-2">Croissant</h3>
+                <p class="text-sm text-gray-400 mb-4">Buttery, flaky French pastry</p>
+                <p class="text-2xl font-bold text-amber-400">1,500 RWF</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-950 to-transparent"></div>
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+      <div class="flex flex-col items-center gap-2 animate-bounce">
+        <span class="text-sm text-gray-400">Scroll to explore</span>
+        <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </div>
   </section>
 </template>
 

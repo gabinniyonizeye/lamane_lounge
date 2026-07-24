@@ -15,12 +15,12 @@
 
   body {
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    @apply bg-slate-50 text-slate-900 antialiased;
-    background-image: radial-gradient(circle at top left, rgba(255, 215, 0, 0.08), transparent 24%), radial-gradient(circle at bottom right, rgba(139, 69, 19, 0.06), transparent 22%);
+    @apply bg-dark text-surface antialiased;
+    background-image: radial-gradient(circle at top left, rgba(167, 107, 76, 0.14), transparent 24%), radial-gradient(circle at bottom right, rgba(44, 24, 16, 0.18), transparent 22%);
   }
 
   ::selection {
-    @apply bg-accent text-dark;
+    @apply bg-primary text-white;
   }
 }
 
@@ -34,32 +34,62 @@
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-full border border-primary text-primary bg-white/95 shadow-sm transition duration-300 hover:bg-primary hover:text-white;
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full border border-secondary text-secondary bg-dark/15 shadow-sm transition duration-300 hover:bg-secondary/15 hover:text-white;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full border border-secondary text-secondary bg-dark/10 shadow-sm transition duration-300 hover:bg-secondary/10 hover:text-white;
   }
 
   .btn-outline {
     @apply inline-flex items-center justify-center px-6 py-3 rounded-full border-2 border-stone-300 text-stone-700 bg-white/90 transition duration-300 hover:bg-stone-100;
   }
 
+  .btn-hero {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 bg-primary text-white font-semibold shadow-2xl shadow-primary/25 transition duration-300 hover:bg-secondary;
+  }
+
   .section-title {
-    @apply text-4xl font-extrabold text-center mb-8 text-dark tracking-tight;
+    @apply text-4xl font-extrabold text-center mb-8 text-white tracking-tight;
   }
 
   .section-subtitle {
-    @apply text-center text-slate-500 max-w-2xl mx-auto mb-12;
+    @apply text-center text-slate-300 max-w-2xl mx-auto mb-12;
   }
 
   .card {
-    @apply bg-white rounded-3xl border border-stone-200 shadow-[0_25px_60px_-30px_rgba(15,23,42,0.35)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_70px_-35px_rgba(15,23,42,0.35)];
+    @apply bg-slate-900/95 rounded-3xl border border-secondary/20 shadow-[0_25px_60px_-30px_rgba(0,0,0,0.45)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_70px_-35px_rgba(0,0,0,0.55)];
   }
 
   .glass-card {
-    @apply bg-white/80 backdrop-blur-xl border border-white/60 shadow-xl;
+    @apply bg-slate-900/70 backdrop-blur-xl border border-secondary/20 shadow-xl;
   }
 
   .gradient-text {
-    background: linear-gradient(90deg, #8B4513, #D2691E);
+    background: linear-gradient(90deg, #3D1F12, #7B4D34);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  .fade-scale-enter-active,
+  .fade-scale-leave-active {
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .fade-scale-enter-from,
+  .fade-scale-leave-to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  .fade-scale-enter-to,
+  .fade-scale-leave-from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
 }
+

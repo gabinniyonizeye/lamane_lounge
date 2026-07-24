@@ -54,7 +54,7 @@
             <div class="mb-8 pb-8 border-b">
               <h3 class="font-semibold text-dark mb-4">📍 Location</h3>
               <div class="space-y-2">
-                <p class="text-gray-700">LAMANE Bakery & Coffee</p>
+                <p class="text-gray-700">LAMANE Lounge & Coffee</p>
                 <p class="text-gray-600">123 Baker Street</p>
                 <p class="text-gray-600">New York, NY 10001</p>
                 <a href="tel:+15551234567" class="text-primary hover:text-secondary font-semibold">

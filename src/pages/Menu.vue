@@ -2,11 +2,11 @@
   <div class="min-h-screen bg-stone-50">
     <section class="bg-dark text-white py-16">
       <div class="container">
-        <p class="text-accent font-semibold uppercase tracking-widest text-sm">LAMANE Bakery & Coffee</p>
+        <p class="text-accent font-semibold uppercase tracking-widest text-sm">LAMANE Lounge & Coffee</p>
         <div class="mt-8 grid gap-8 lg:grid-cols-[1.5fr_1fr] items-start">
           <div>
             <h1 class="text-5xl sm:text-6xl font-extrabold leading-tight">Menu made for cravings, crafted with fresh ingredients.</h1>
-            <p class="mt-4 max-w-2xl text-stone-200 text-lg">Explore vibrant bakery favorites, breakfast classics, hearty meals, and refreshing drinks with ingredient-driven photos and easy ordering.</p>
+            <p class="mt-4 max-w-2xl text-stone-200 text-lg">Explore vibrant lounge favorites, breakfast classics, hearty meals, and refreshing drinks with ingredient-driven photos and easy ordering.</p>
             <div class="mt-8 flex flex-wrap gap-3">
               <router-link to="/shop" class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-dark transition hover:bg-secondary">Order Now · Free Delivery</router-link>
               <router-link to="#menu-search" class="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white/90 transition hover:border-white hover:text-white">Jump to menu</router-link>
