@@ -1,64 +1,64 @@
 <template>
-  <div class="min-h-screen bg-stone-50">
-    <section class="bg-dark text-white py-16">
+  <div class="min-h-screen bg-white dark:bg-black">
+    <section class="bg-gradient-to-br from-gray-900 to-black dark:from-black dark:to-gray-900 text-white py-16">
       <div class="container">
-        <p class="text-accent font-semibold uppercase tracking-widest text-sm">LAMANE Lounge & Coffee</p>
+        <p class="text-amber-400 font-semibold uppercase tracking-widest text-sm">LAMANE Lounge & Coffee</p>
         <div class="mt-8 grid gap-8 lg:grid-cols-[1.5fr_1fr] items-start">
           <div>
-            <h1 class="text-5xl sm:text-6xl font-extrabold leading-tight">Menu made for cravings, crafted with fresh ingredients.</h1>
-            <p class="mt-4 max-w-2xl text-stone-200 text-lg">Explore vibrant lounge favorites, breakfast classics, hearty meals, and refreshing drinks with ingredient-driven photos and easy ordering.</p>
+            <h1 class="text-5xl sm:text-6xl font-extrabold leading-tight text-white">Menu made for cravings, crafted with fresh ingredients.</h1>
+            <p class="mt-4 max-w-2xl text-gray-300 text-lg">Explore vibrant lounge favorites, breakfast classics, hearty meals, and refreshing drinks with ingredient-driven photos and easy ordering.</p>
             <div class="mt-8 flex flex-wrap gap-3">
-              <router-link to="/shop" class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-dark transition hover:bg-secondary">Order Now · Free Delivery</router-link>
-              <router-link to="#menu-search" class="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white/90 transition hover:border-white hover:text-white">Jump to menu</router-link>
+              <router-link to="/shop" class="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-amber-500 to-amber-600 px-6 py-3 text-sm font-semibold text-white transition hover:from-amber-600 hover:to-amber-700">Order Now · Free Delivery</router-link>
+              <router-link to="#menu-search" class="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10">Jump to menu</router-link>
             </div>
           </div>
           <div class="grid gap-4 sm:grid-cols-2">
-            <div class="rounded-[2rem] border border-white/10 bg-white/10 p-6 backdrop-blur-sm">
-              <p class="text-xs uppercase tracking-[0.3em] text-stone-300">Chef’s pick</p>
-              <h2 class="mt-4 text-2xl font-bold">Lamané Pizza</h2>
-              <p class="mt-3 text-stone-200">Rich tomato sauce, mozzarella, and roasted vegetables for a bold shareable flavor.</p>
+            <div class="rounded-[2rem] border border-amber-500/30 bg-amber-500/10 p-6 backdrop-blur-sm">
+              <p class="text-xs uppercase tracking-[0.3em] text-amber-300">Chef's pick</p>
+              <h2 class="mt-4 text-2xl font-bold text-white">Lamané Pizza</h2>
+              <p class="mt-3 text-gray-300">Rich tomato sauce, mozzarella, and roasted vegetables for a bold shareable flavor.</p>
             </div>
-            <div class="rounded-[2rem] border border-white/10 bg-white/10 p-6 backdrop-blur-sm">
-              <p class="text-xs uppercase tracking-[0.3em] text-stone-300">Fresh & wholesome</p>
-              <h2 class="mt-4 text-2xl font-bold">Avocado Salad</h2>
-              <p class="mt-3 text-stone-200">Creamy avocado, crisp greens, and citrus for a refreshing healthy bite.</p>
+            <div class="rounded-[2rem] border border-amber-500/30 bg-amber-500/10 p-6 backdrop-blur-sm">
+              <p class="text-xs uppercase tracking-[0.3em] text-amber-300">Fresh & wholesome</p>
+              <h2 class="mt-4 text-2xl font-bold text-white">Avocado Salad</h2>
+              <p class="mt-3 text-gray-300">Creamy avocado, crisp greens, and citrus for a refreshing healthy bite.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="sticky top-0 z-30 bg-white border-b shadow-sm">
+    <div class="sticky top-0 z-30 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-amber-500/20 shadow-sm">
       <div class="container flex flex-col gap-4 py-4 md:flex-row md:items-center md:justify-between">
         <div class="flex gap-3 overflow-x-auto">
-          <a v-for="section in filteredMenu" :key="section.title" :href="`#${slug(section.title)}`" class="whitespace-nowrap rounded-full bg-stone-100 px-3 py-1.5 text-sm text-dark transition hover:bg-primary hover:text-white">{{ section.title }}</a>
+          <a v-for="section in filteredMenu" :key="section.title" :href="`#${slug(section.title)}`" class="whitespace-nowrap rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1.5 text-sm text-gray-900 dark:text-white transition hover:bg-amber-500 dark:hover:bg-amber-500 hover:text-white">{{ section.title }}</a>
         </div>
         <label id="menu-search" class="relative w-full max-w-sm">
           <span class="sr-only">Search menu</span>
-          <input v-model="searchQuery" type="search" placeholder="Search menu items or ingredients" class="w-full rounded-full border border-stone-200 bg-white py-3 pl-12 pr-4 text-sm text-dark shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20" />
-          <i class="fa fa-search absolute left-4 top-1/2 -translate-y-1/2 text-stone-400"></i>
+          <input v-model="searchQuery" type="search" placeholder="Search menu items or ingredients" class="w-full rounded-full border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 py-3 pl-12 pr-4 text-sm text-gray-900 dark:text-white shadow-sm outline-none transition focus:border-amber-500 dark:focus:border-amber-400 focus:ring-2 focus:ring-amber-500/20" />
+          <i class="fa fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-600"></i>
         </label>
       </div>
     </div>
 
     <main class="container py-10">
-      <div class="bg-green-50 border border-green-200 rounded-xl p-4 mb-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p class="font-semibold text-green-900">Free delivery on orders placed through LAMANE.</p>
-        <router-link to="/shop" class="font-bold text-green-800 underline">Start your order →</router-link>
+      <div class="bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/30 rounded-xl p-4 mb-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <p class="font-semibold text-green-900 dark:text-green-300">Free delivery on orders placed through LAMANE.</p>
+        <router-link to="/shop" class="font-bold text-green-800 dark:text-green-300 underline">Start your order →</router-link>
       </div>
 
-      <section v-if="filteredMenu.length === 0" class="rounded-3xl border border-stone-200 bg-white p-10 text-center text-stone-600 shadow-sm">
+      <section v-if="filteredMenu.length === 0" class="rounded-3xl border border-gray-200 dark:border-amber-500/20 bg-white dark:bg-gray-900 p-10 text-center text-gray-600 dark:text-gray-400 shadow-sm">
         <p class="text-lg font-semibold">No items match your search.</p>
         <p class="mt-2 text-sm">Try a different ingredient or menu name.</p>
       </section>
 
       <section v-for="section in filteredMenu" :id="slug(section.title)" :key="section.title" class="mb-12 scroll-mt-20">
         <div class="flex items-center gap-4 mb-5">
-          <h2 class="text-2xl font-bold text-dark">{{ section.title }}</h2>
-          <span class="h-px bg-stone-300 flex-1"></span>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{{ section.title }}</h2>
+          <span class="h-px bg-gray-300 dark:bg-amber-500/20 flex-1"></span>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <article v-for="item in section.items" :key="item.name" class="group flex flex-col overflow-hidden rounded-3xl border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+          <article v-for="item in section.items" :key="item.name" class="group flex flex-col overflow-hidden rounded-3xl border border-gray-200 dark:border-amber-500/20 bg-white dark:bg-gray-900 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
             <div class="relative overflow-hidden">
               <img
                 :src="menuImageFor(item)"
@@ -67,18 +67,18 @@
                 loading="lazy"
                 decoding="async"
               />
-              <span class="absolute top-3 right-3 rounded-full bg-white/95 px-3 py-1 text-sm font-bold text-primary shadow-sm">{{ money(item.price) }}</span>
+              <span class="absolute top-3 right-3 rounded-full bg-white/95 dark:bg-gray-900/95 px-3 py-1 text-sm font-bold text-amber-600 dark:text-amber-400 shadow-sm">{{ money(item.price) }}</span>
             </div>
             <div class="flex flex-1 flex-col gap-4 p-5">
               <div>
-                <p class="text-xs font-bold uppercase tracking-wider text-secondary">{{ section.title }}</p>
-                <h3 class="mt-2 text-xl font-bold text-dark">{{ item.name }}</h3>
+                <p class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">{{ section.title }}</p>
+                <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">{{ item.name }}</h3>
               </div>
-              <p class="text-sm text-gray-600 leading-relaxed min-h-[3rem]">{{ item.description || 'Prepared fresh to order with local ingredients.' }}</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed min-h-[3rem]">{{ item.description || 'Prepared fresh to order with local ingredients.' }}</p>
               <div class="flex flex-wrap gap-2">
-                <span v-for="tag in item.tags" :key="tag" class="rounded-full bg-stone-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-stone-700">{{ tag }}</span>
+                <span v-for="tag in item.tags" :key="tag" class="rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gray-700 dark:text-gray-300">{{ tag }}</span>
               </div>
-              <router-link :to="{ path: '/shop', query: { search: item.name } }" class="mt-auto inline-flex items-center justify-center rounded-full bg-primary px-4 py-3 text-sm font-semibold text-white transition hover:bg-secondary">Order Now</router-link>
+              <router-link :to="{ path: '/shop', query: { search: item.name } }" class="mt-auto inline-flex items-center justify-center rounded-full bg-gradient-to-r from-amber-500 to-amber-600 px-4 py-3 text-sm font-semibold text-white transition hover:from-amber-600 hover:to-amber-700">Order Now</router-link>
             </div>
           </article>
         </div>
@@ -262,6 +262,6 @@ const filteredMenu = computed(() => {
     .filter(section => section.items.length)
 })
 
-const money = price => `${price.toLocaleString()} RWF`
-const slug = value => value.toLowerCase().replaceAll(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+const money = (price) => `${price.toLocaleString()} RWF`
+const slug = (value) => value.toLowerCase().replaceAll(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 </script>

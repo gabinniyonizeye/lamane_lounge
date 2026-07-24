@@ -20,14 +20,14 @@
                   <div
                     :class="[
                       'w-10 h-10 rounded-full flex items-center justify-center font-bold text-white',
-                      currentStep > index ? 'bg-green-500' : currentStep === index ? 'bg-primary' : 'bg-gray-300'
+                      currentStep > index ? 'bg-green-500' : currentStep === index ? 'bg-amber-500' : 'bg-gray-300 dark:bg-gray-700'
                     ]"
                   >
                     {{ index + 1 }}
                   </div>
-                  <div v-if="index < steps.length - 1" :class="['flex-1 h-1 mx-2', currentStep > index ? 'bg-green-500' : 'bg-gray-300']" />
+                  <div v-if="index < steps.length - 1" :class="['flex-1 h-1 mx-2', currentStep > index ? 'bg-green-500' : 'bg-gray-300 dark:bg-gray-700']" />
                 </div>
-                <p class="text-xs font-semibold text-dark mt-2 text-center">{{ step }}</p>
+                <p class="text-xs font-semibold text-gray-900 dark:text-white mt-2 text-center">{{ step }}</p>
               </div>
             </div>
           </div>
@@ -55,15 +55,15 @@
           </div>
 
           <!-- Step 2: Flavor -->
-          <div v-if="currentStep === 1" class="bg-white rounded-lg p-8 mb-8">
-            <h2 class="text-2xl font-bold text-dark mb-6">Choose Flavor</h2>
+          <div v-if="currentStep === 1" class="bg-white dark:bg-gray-900 rounded-lg p-8 mb-8 border border-gray-200 dark:border-amber-500/20">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Choose Flavor</h2>
             
             <form @submit.prevent="nextStep" class="space-y-4">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <label v-for="flavor in flavors" :key="flavor.id" class="border-2 rounded-lg p-4 cursor-pointer" :class="form.flavor === flavor.id ? 'border-primary bg-primary/5' : 'border-gray-300'">
-                  <input v-model="form.flavor" type="radio" :value="flavor.id" class="w-4 h-4 text-primary" />
-                  <p class="font-semibold text-dark mt-2">{{ flavor.name }}</p>
-                  <p class="text-sm text-gray-600">{{ flavor.description }}</p>
+                <label v-for="flavor in flavors" :key="flavor.id" class="border-2 rounded-lg p-4 cursor-pointer bg-white dark:bg-gray-800" :class="form.flavor === flavor.id ? 'border-amber-500 dark:border-amber-400 bg-amber-50 dark:bg-amber-500/10' : 'border-gray-300 dark:border-gray-700'">
+                  <input v-model="form.flavor" type="radio" :value="flavor.id" class="w-4 h-4 text-amber-600" />
+                  <p class="font-semibold text-gray-900 dark:text-white mt-2">{{ flavor.name }}</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">{{ flavor.description }}</p>
                 </label>
               </div>
 
@@ -79,16 +79,16 @@
           </div>
 
           <!-- Step 3: Filling -->
-          <div v-if="currentStep === 2" class="bg-white rounded-lg p-8 mb-8">
-            <h2 class="text-2xl font-bold text-dark mb-6">Select Filling</h2>
+          <div v-if="currentStep === 2" class="bg-white dark:bg-gray-900 rounded-lg p-8 mb-8 border border-gray-200 dark:border-amber-500/20">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Select Filling</h2>
             
             <form @submit.prevent="nextStep" class="space-y-4">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <label v-for="filling in fillings" :key="filling.id" class="border-2 rounded-lg p-4 cursor-pointer" :class="form.filling === filling.id ? 'border-primary bg-primary/5' : 'border-gray-300'">
-                  <input v-model="form.filling" type="radio" :value="filling.id" class="w-4 h-4 text-primary" />
-                  <p class="font-semibold text-dark mt-2">{{ filling.name }}</p>
-                  <p class="text-sm text-gray-600">{{ filling.description }}</p>
-                  <p class="text-sm font-semibold text-primary mt-2">+{{ filling.price.toLocaleString() }} RWF</p>
+                <label v-for="filling in fillings" :key="filling.id" class="border-2 rounded-lg p-4 cursor-pointer bg-white dark:bg-gray-800" :class="form.filling === filling.id ? 'border-amber-500 dark:border-amber-400 bg-amber-50 dark:bg-amber-500/10' : 'border-gray-300 dark:border-gray-700'">
+                  <input v-model="form.filling" type="radio" :value="filling.id" class="w-4 h-4 text-amber-600" />
+                  <p class="font-semibold text-gray-900 dark:text-white mt-2">{{ filling.name }}</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">{{ filling.description }}</p>
+                  <p class="text-sm font-semibold text-amber-600 dark:text-amber-400 mt-2">+{{ filling.price.toLocaleString() }} RWF</p>
                 </label>
               </div>
 
@@ -104,25 +104,25 @@
           </div>
 
           <!-- Step 4: Color -->
-          <div v-if="currentStep === 3" class="bg-white rounded-lg p-8 mb-8">
-            <h2 class="text-2xl font-bold text-dark mb-6">Choose Color</h2>
+          <div v-if="currentStep === 3" class="bg-white dark:bg-gray-900 rounded-lg p-8 mb-8 border border-gray-200 dark:border-amber-500/20">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Choose Color</h2>
             
             <form @submit.prevent="nextStep" class="space-y-6">
               <div>
-                <label class="block text-sm font-semibold text-dark mb-4">Frosting Color</label>
+                <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-4">Frosting Color</label>
                 <div class="flex gap-4 flex-wrap">
                   <label v-for="color in colors" :key="color" class="cursor-pointer">
                     <input v-model="form.color" type="radio" :value="color" class="sr-only" />
                     <div
                       :style="{ backgroundColor: color }"
-                      :class="['w-12 h-12 rounded-full border-4', form.color === color ? 'border-dark' : 'border-gray-300']"
+                      :class="['w-12 h-12 rounded-full border-4', form.color === color ? 'border-gray-900 dark:border-white' : 'border-gray-300 dark:border-gray-700']"
                     />
                   </label>
                 </div>
               </div>
 
               <div>
-                <label class="block text-sm font-semibold text-dark mb-2">Custom Color</label>
+                <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Custom Color</label>
                 <input
                   v-model="form.customColor"
                   type="color"
@@ -142,20 +142,20 @@
           </div>
 
           <!-- Step 5: Message -->
-          <div v-if="currentStep === 4" class="bg-white rounded-lg p-8 mb-8">
-            <h2 class="text-2xl font-bold text-dark mb-6">Add Message</h2>
+          <div v-if="currentStep === 4" class="bg-white dark:bg-gray-900 rounded-lg p-8 mb-8 border border-gray-200 dark:border-amber-500/20">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Add Message</h2>
             
             <form @submit.prevent="nextStep" class="space-y-4">
               <div>
-                <label class="block text-sm font-semibold text-dark mb-2">Message on Cake (Optional)</label>
+                <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Message on Cake (Optional)</label>
                 <textarea
                   v-model="form.message"
                   maxlength="50"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  class="w-full px-4 py-2 border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                   placeholder="Happy Birthday!"
                   rows="3"
                 />
-                <p class="text-sm text-gray-600 mt-2">{{ form.message.length }}/50 characters</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">{{ form.message.length }}/50 characters</p>
               </div>
 
               <div class="flex gap-4 pt-6">
@@ -170,21 +170,21 @@
           </div>
 
           <!-- Step 6: Inspiration Photo -->
-          <div v-if="currentStep === 5" class="bg-white rounded-lg p-8 mb-8">
-            <h2 class="text-2xl font-bold text-dark mb-6">Upload Inspiration Photo</h2>
+          <div v-if="currentStep === 5" class="bg-white dark:bg-gray-900 rounded-lg p-8 mb-8 border border-gray-200 dark:border-amber-500/20">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Upload Inspiration Photo</h2>
             
             <form @submit.prevent="nextStep" class="space-y-4">
               <div>
-                <label class="block text-sm font-semibold text-dark mb-2">Reference Photo (Optional)</label>
-                <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-primary transition">
-                  <svg class="w-12 h-12 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Reference Photo (Optional)</label>
+                <div class="border-2 border-dashed border-gray-300 dark:border-amber-500/30 rounded-lg p-8 text-center cursor-pointer hover:border-amber-500 dark:hover:border-amber-400 transition bg-gray-50 dark:bg-gray-800">
+                  <svg class="w-12 h-12 text-gray-400 dark:text-gray-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
-                  <p class="text-gray-600">Click to upload or drag and drop</p>
-                  <p class="text-sm text-gray-500">PNG, JPG up to 5MB</p>
+                  <p class="text-gray-600 dark:text-gray-400">Click to upload or drag and drop</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-500">PNG, JPG up to 5MB</p>
                   <input type="file" class="hidden" accept="image/*" @change="handleFileUpload" />
                 </div>
-                <p v-if="form.inspirationPhoto" class="text-sm text-green-600 mt-2">✓ Photo uploaded</p>
+                <p v-if="form.inspirationPhoto" class="text-sm text-green-600 dark:text-green-400 mt-2">✓ Photo uploaded</p>
               </div>
 
               <div class="flex gap-4 pt-6">
@@ -199,27 +199,27 @@
           </div>
 
           <!-- Step 7: Pickup Date/Time -->
-          <div v-if="currentStep === 6" class="bg-white rounded-lg p-8 mb-8">
-            <h2 class="text-2xl font-bold text-dark mb-6">Pickup Date & Time</h2>
+          <div v-if="currentStep === 6" class="bg-white dark:bg-gray-900 rounded-lg p-8 mb-8 border border-gray-200 dark:border-amber-500/20">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Pickup Date & Time</h2>
             
             <form @submit.prevent="nextStep" class="space-y-4">
               <div>
-                <label class="block text-sm font-semibold text-dark mb-2">Pickup Date *</label>
+                <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Pickup Date *</label>
                 <input
                   v-model="form.pickupDate"
                   type="date"
                   :min="minDate"
                   required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  class="w-full px-4 py-2 border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                 />
               </div>
 
               <div>
-                <label class="block text-sm font-semibold text-dark mb-2">Pickup Time *</label>
+                <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Pickup Time *</label>
                 <select
                   v-model="form.pickupTime"
                   required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  class="w-full px-4 py-2 border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                 >
                   <option value="">Select time</option>
                   <option v-for="time in timeSlots" :key="time" :value="time">
@@ -228,8 +228,8 @@
                 </select>
               </div>
 
-              <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <p class="text-sm text-blue-800">
+              <div class="bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/30 rounded-lg p-4">
+                <p class="text-sm text-blue-800 dark:text-blue-300">
                   <strong>Note:</strong> Custom cakes require at least 2 days advance notice.
                 </p>
               </div>
@@ -246,49 +246,49 @@
           </div>
 
           <!-- Step 8: Contact Information -->
-          <div v-if="currentStep === 7" class="bg-white rounded-lg p-8 mb-8">
-            <h2 class="text-2xl font-bold text-dark mb-6">Contact Information</h2>
+          <div v-if="currentStep === 7" class="bg-white dark:bg-gray-900 rounded-lg p-8 mb-8 border border-gray-200 dark:border-amber-500/20">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Contact Information</h2>
             
             <form @submit.prevent="submitCake" class="space-y-4">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-sm font-semibold text-dark mb-2">Full Name *</label>
+                  <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Full Name *</label>
                   <input
                     v-model="form.fullName"
                     type="text"
                     required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    class="w-full px-4 py-2 border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                     placeholder="John Doe"
                   />
                 </div>
                 <div>
-                  <label class="block text-sm font-semibold text-dark mb-2">Phone Number *</label>
+                  <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Phone Number *</label>
                   <input
                     v-model="form.phone"
                     type="tel"
                     required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    class="w-full px-4 py-2 border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                     placeholder="+1 (555) 123-4567"
                   />
                 </div>
               </div>
 
               <div>
-                <label class="block text-sm font-semibold text-dark mb-2">Email *</label>
+                <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Email *</label>
                 <input
                   v-model="form.email"
                   type="email"
                   required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  class="w-full px-4 py-2 border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                   placeholder="john@example.com"
                 />
               </div>
 
               <div>
-                <label class="block text-sm font-semibold text-dark mb-2">Special Requests</label>
+                <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Special Requests</label>
                 <textarea
                   v-model="form.specialRequests"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  class="w-full px-4 py-2 border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                   placeholder="Any special requests or allergies?"
                   rows="3"
                 />
@@ -306,7 +306,7 @@
           </div>
         </div>
 
-          <!-- Price Summary Sidebar -->
+        <!-- Price Summary Sidebar -->
         <div class="lg:col-span-1">
           <div class="bg-white dark:bg-gray-900 rounded-lg p-6 sticky top-24 border border-gray-200 dark:border-amber-500/20">
             <h3 class="text-xl font-black text-gray-900 dark:text-white mb-6">Order Summary</h3>

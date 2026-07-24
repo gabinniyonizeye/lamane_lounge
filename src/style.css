@@ -32,6 +32,38 @@
     @apply bg-black text-gray-100;
   }
 
+  /* Ensure all text is readable */
+  html.dark {
+    @apply bg-black;
+  }
+
+  html.dark h1,
+  html.dark h2,
+  html.dark h3,
+  html.dark h4,
+  html.dark h5,
+  html.dark h6 {
+    @apply text-white;
+  }
+
+  html.dark p,
+  html.dark span,
+  html.dark div,
+  html.dark label {
+    @apply text-gray-100;
+  }
+
+  html.dark input,
+  html.dark textarea,
+  html.dark select {
+    @apply bg-gray-800 text-white border-amber-500/30;
+  }
+
+  html.dark input::placeholder,
+  html.dark textarea::placeholder {
+    @apply text-gray-500;
+  }
+
   ::selection {
     @apply bg-amber-500 text-white dark:bg-amber-400 dark:text-black;
   }
@@ -72,5 +104,56 @@
 
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Form inputs with proper contrast */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="time"],
+  input[type="number"],
+  textarea,
+  select {
+    @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-300 dark:border-amber-500/30;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  input[type="date"]:focus,
+  input[type="time"]:focus,
+  input[type="number"]:focus,
+  textarea:focus,
+  select:focus {
+    @apply border-amber-500 dark:border-amber-400 ring-2 ring-amber-500/20;
+  }
+
+  /* Ensure labels are readable */
+  label {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  /* Ensure links are readable */
+  a {
+    @apply text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300;
+  }
+
+  /* Ensure buttons are readable */
+  button {
+    @apply text-white;
+  }
+
+  /* Ensure table text is readable */
+  table {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  th {
+    @apply bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white;
+  }
+
+  td {
+    @apply text-gray-900 dark:text-white;
   }
 }

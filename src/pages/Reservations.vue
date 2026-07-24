@@ -1,10 +1,10 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="min-h-screen bg-white dark:bg-black">
     <!-- Header -->
-    <div class="bg-white border-b">
+    <div class="bg-gradient-to-br from-amber-50 to-white dark:from-gray-900 dark:to-black border-b border-gray-200 dark:border-amber-500/20">
       <div class="container py-8">
-        <h1 class="text-4xl font-bold text-dark">Make a Reservation</h1>
-        <p class="text-gray-600 mt-2">Reserve a table at LAMANE Lounge & Coffee</p>
+        <h1 class="text-4xl font-bold text-gray-900 dark:text-white">Make a Reservation</h1>
+        <p class="text-gray-600 dark:text-gray-400 mt-2">Reserve a table at LAMANE Lounge & Coffee</p>
       </div>
     </div>
 
@@ -12,27 +12,27 @@
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Main Content -->
         <div class="lg:col-span-2">
-          <div class="bg-white rounded-lg p-8">
+          <div class="bg-white dark:bg-gray-900 rounded-lg p-8 border border-gray-200 dark:border-amber-500/20">
             <form @submit.prevent="submitReservation" class="space-y-6">
               <!-- Date -->
               <div>
-                <label class="block text-sm font-semibold text-dark mb-2">Reservation Date *</label>
+                <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Reservation Date *</label>
                 <input
                   v-model="form.date"
                   type="date"
                   :min="minDate"
                   required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  class="w-full px-4 py-2 border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                 />
               </div>
 
               <!-- Time -->
               <div>
-                <label class="block text-sm font-semibold text-dark mb-2">Time *</label>
+                <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Time *</label>
                 <select
                   v-model="form.time"
                   required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  class="w-full px-4 py-2 border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                 >
                   <option value="">Select time</option>
                   <option v-for="time in availableTimeSlots" :key="time" :value="time">
@@ -43,11 +43,11 @@
 
               <!-- Number of Guests -->
               <div>
-                <label class="block text-sm font-semibold text-dark mb-2">Number of Guests *</label>
+                <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Number of Guests *</label>
                 <select
                   v-model.number="form.guests"
                   required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  class="w-full px-4 py-2 border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                 >
                   <option value="">Select number</option>
                   <option v-for="n in 20" :key="n" :value="n">{{ n }} {{ n === 1 ? 'Guest' : 'Guests' }}</option>
@@ -56,16 +56,16 @@
 
               <!-- Reservation Type -->
               <div>
-                <label class="block text-sm font-semibold text-dark mb-3">Reservation Type *</label>
+                <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-3">Reservation Type *</label>
                 <div class="space-y-2">
                   <label v-for="type in reservationTypes" :key="type.id" class="flex items-center">
                     <input
                       v-model="form.type"
                       type="radio"
                       :value="type.id"
-                      class="w-4 h-4 text-primary"
+                      class="w-4 h-4 text-amber-600"
                     />
-                    <span class="ml-2 text-gray-700">{{ type.name }}</span>
+                    <span class="ml-2 text-gray-700 dark:text-gray-300">{{ type.name }}</span>
                   </label>
                 </div>
               </div>
@@ -73,22 +73,22 @@
               <!-- Name -->
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-sm font-semibold text-dark mb-2">Full Name *</label>
+                  <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Full Name *</label>
                   <input
                     v-model="form.fullName"
                     type="text"
                     required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    class="w-full px-4 py-2 border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                     placeholder="John Doe"
                   />
                 </div>
                 <div>
-                  <label class="block text-sm font-semibold text-dark mb-2">Phone Number *</label>
+                  <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Phone Number *</label>
                   <input
                     v-model="form.phone"
                     type="tel"
                     required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    class="w-full px-4 py-2 border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                     placeholder="+1 (555) 123-4567"
                   />
                 </div>
@@ -96,22 +96,22 @@
 
               <!-- Email -->
               <div>
-                <label class="block text-sm font-semibold text-dark mb-2">Email *</label>
+                <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Email *</label>
                 <input
                   v-model="form.email"
                   type="email"
                   required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  class="w-full px-4 py-2 border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                   placeholder="john@example.com"
                 />
               </div>
 
               <!-- Special Requests -->
               <div>
-                <label class="block text-sm font-semibold text-dark mb-2">Special Requests</label>
+                <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Special Requests</label>
                 <textarea
                   v-model="form.specialRequests"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  class="w-full px-4 py-2 border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                   placeholder="Any special requests or dietary requirements?"
                   rows="4"
                 />
@@ -122,10 +122,10 @@
                 <input
                   v-model="form.agreeTerms"
                   type="checkbox"
-                  class="w-4 h-4 text-primary mt-1"
+                  class="w-4 h-4 text-amber-600 mt-1"
                   required
                 />
-                <label class="text-sm text-gray-700">
+                <label class="text-sm text-gray-700 dark:text-gray-300">
                   I agree to the reservation terms and conditions
                 </label>
               </div>
@@ -144,11 +144,11 @@
 
         <!-- Info Sidebar -->
         <div class="lg:col-span-1">
-          <div class="bg-white rounded-lg p-6 sticky top-24 space-y-6">
+          <div class="bg-white dark:bg-gray-900 rounded-lg p-6 sticky top-24 space-y-6 border border-gray-200 dark:border-amber-500/20">
             <!-- Hours -->
             <div>
-              <h3 class="font-semibold text-dark mb-3">🕐 Hours</h3>
-              <div class="text-sm text-gray-600 space-y-1">
+              <h3 class="font-semibold text-gray-900 dark:text-white mb-3">🕐 Hours</h3>
+              <div class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
                 <p>Monday - Friday: 8:00 AM - 8:00 PM</p>
                 <p>Saturday: 9:00 AM - 9:00 PM</p>
                 <p>Sunday: 10:00 AM - 7:00 PM</p>
@@ -156,19 +156,19 @@
             </div>
 
             <!-- Location -->
-            <div class="border-t pt-6">
-              <h3 class="font-semibold text-dark mb-3">📍 Location</h3>
-              <p class="text-sm text-gray-600">
+            <div class="border-t border-gray-200 dark:border-amber-500/20 pt-6">
+              <h3 class="font-semibold text-gray-900 dark:text-white mb-3">📍 Location</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
                 123 Baker Street<br>
                 New York, NY 10001<br>
-                <a href="tel:+15551234567" class="text-primary hover:text-secondary">+1 (555) 123-4567</a>
+                <a href="tel:+15551234567" class="text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300">+1 (555) 123-4567</a>
               </p>
             </div>
 
             <!-- Policies -->
-            <div class="border-t pt-6">
-              <h3 class="font-semibold text-dark mb-3">📋 Policies</h3>
-              <ul class="text-xs text-gray-600 space-y-2">
+            <div class="border-t border-gray-200 dark:border-amber-500/20 pt-6">
+              <h3 class="font-semibold text-gray-900 dark:text-white mb-3">📋 Policies</h3>
+              <ul class="text-xs text-gray-600 dark:text-gray-400 space-y-2">
                 <li>✓ Reservations held for 15 minutes</li>
                 <li>✓ Cancellations 24 hours notice</li>
                 <li>✓ Groups of 8+ require deposit</li>
@@ -177,20 +177,20 @@
             </div>
 
             <!-- Reservation Summary -->
-            <div class="border-t pt-6 bg-gray-50 rounded-lg p-4">
-              <h3 class="font-semibold text-dark mb-3">Reservation Summary</h3>
+            <div class="border-t border-gray-200 dark:border-amber-500/20 pt-6 bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+              <h3 class="font-semibold text-gray-900 dark:text-white mb-3">Reservation Summary</h3>
               <div class="text-sm space-y-2">
                 <div v-if="form.date" class="flex justify-between">
-                  <span class="text-gray-600">Date</span>
-                  <span class="font-semibold">{{ form.date }}</span>
+                  <span class="text-gray-600 dark:text-gray-400">Date</span>
+                  <span class="font-semibold text-gray-900 dark:text-white">{{ form.date }}</span>
                 </div>
                 <div v-if="form.time" class="flex justify-between">
-                  <span class="text-gray-600">Time</span>
-                  <span class="font-semibold">{{ form.time }}</span>
+                  <span class="text-gray-600 dark:text-gray-400">Time</span>
+                  <span class="font-semibold text-gray-900 dark:text-white">{{ form.time }}</span>
                 </div>
                 <div v-if="form.guests" class="flex justify-between">
-                  <span class="text-gray-600">Guests</span>
-                  <span class="font-semibold">{{ form.guests }}</span>
+                  <span class="text-gray-600 dark:text-gray-400">Guests</span>
+                  <span class="font-semibold text-gray-900 dark:text-white">{{ form.guests }}</span>
                 </div>
               </div>
             </div>
@@ -225,7 +225,7 @@ const reservationTypes = [
   { id: 'table', name: '🪑 Table' },
   { id: 'birthday', name: '🎂 Birthday Party' },
   { id: 'business', name: '💼 Business Meeting' },
-  { id: 'family', name: '👨‍👩‍👧‍👦 Family Gathering' },
+  { id: 'family', name: '👨👩👧👦 Family Gathering' },
 ]
 
 const availableTimeSlots = [
