@@ -8,7 +8,7 @@
         </div>
         <div>
           <p class="text-xs uppercase tracking-widest font-bold text-amber-700 dark:text-amber-300">LAMANE</p>
-          <p class="text-sm font-bold text-gray-900 dark:text-white">Bakery & Coffee</p>
+          <p class="text-sm font-bold text-gray-900 dark:text-white">Bakery & Cafe</p>
         </div>
       </router-link>
 

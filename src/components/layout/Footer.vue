@@ -1,33 +1,33 @@
 <template>
-  <footer class="bg-gradient-to-br from-dark via-primary/10 to-dark text-white">
+  <footer class="bg-gradient-to-br from-gray-900 to-black text-white">
     <div class="container py-16">
       <div class="grid gap-12 lg:grid-cols-4 mb-10">
         <div class="space-y-4">
           <div class="flex items-center gap-3">
-            <div class="flex h-10 w-10 items-center justify-center rounded-3xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg shadow-primary/20">
+            <div class="flex h-10 w-10 items-center justify-center rounded-3xl bg-gradient-to-br from-amber-500 to-amber-600 text-white shadow-lg shadow-amber-500/20">
               <span class="text-lg font-bold">L</span>
             </div>
             <div>
-              <p class="text-sm uppercase tracking-[0.35em] text-slate-400">LAMANE</p>
-              <p class="text-lg font-semibold text-white">Lounge & Coffee</p>
+              <p class="text-sm uppercase tracking-[0.35em] text-gray-400">LAMANE</p>
+              <p class="text-lg font-semibold text-white">Bakery & Cafe</p>
             </div>
           </div>
-          <p class="text-sm leading-7 text-slate-300">Delicious moments with premium pastries and lounge-style coffee, crafted fresh every day. Taste the warmth and rich ingredients in every order.</p>
+          <p class="text-sm leading-7 text-gray-300">Delicious moments with premium pastries and lounge-style coffee, crafted fresh every day. Taste the warmth and rich ingredients in every order.</p>
         </div>
 
         <div>
           <h4 class="mb-4 text-lg font-semibold text-white">Quick Links</h4>
-          <ul class="space-y-3 text-sm text-slate-400">
-            <li><router-link to="/" class="transition hover:text-accent">Home</router-link></li>
-            <li><router-link to="/shop" class="transition hover:text-accent">Shop</router-link></li>
-            <li><router-link to="/about" class="transition hover:text-accent">About Us</router-link></li>
-            <li><router-link to="/contact" class="transition hover:text-accent">Contact</router-link></li>
+          <ul class="space-y-3 text-sm text-gray-400">
+            <li><router-link to="/" class="transition hover:text-amber-400">Home</router-link></li>
+            <li><router-link to="/shop" class="transition hover:text-amber-400">Shop</router-link></li>
+            <li><router-link to="/about" class="transition hover:text-amber-400">About Us</router-link></li>
+            <li><router-link to="/contact" class="transition hover:text-amber-400">Contact</router-link></li>
           </ul>
         </div>
 
         <div>
           <h4 class="mb-4 text-lg font-semibold text-white">Contact</h4>
-          <ul class="space-y-4 text-sm text-slate-400">
+          <ul class="space-y-4 text-sm text-gray-400">
             <li class="flex items-start gap-3">
               <span class="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-white/10 text-white">
                 <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
@@ -51,13 +51,13 @@
 
         <div>
           <h4 class="mb-4 text-lg font-semibold text-white">Newsletter</h4>
-          <p class="text-sm text-slate-400 mb-4">Subscribe for exclusive offers and updates.</p>
+          <p class="text-sm text-gray-400 mb-4">Subscribe for exclusive offers and updates.</p>
           <form @submit.prevent="subscribeNewsletter" class="space-y-3">
             <input
               v-model="email"
               type="email"
               placeholder="Your email"
-              class="w-full rounded-3xl border border-secondary/20 bg-dark/80 px-4 py-3 text-sm text-white outline-none placeholder:text-slate-400 focus:border-accent focus:ring-2 focus:ring-accent/10"
+              class="w-full rounded-3xl border border-amber-500/20 bg-gray-800 px-4 py-3 text-sm text-white outline-none placeholder:text-gray-500 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/10"
               required
             />
             <button type="submit" class="w-full btn-primary text-sm">Subscribe</button>
@@ -67,12 +67,12 @@
       </div>
 
       <div class="border-t border-white/10 pt-8">
-        <div class="flex flex-col gap-4 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
-          <p>© 2024 LAMANE Bakery & Coffee. All rights reserved.</p>
+        <div class="flex flex-col gap-4 text-sm text-gray-400 md:flex-row md:items-center md:justify-between">
+          <p>© 2024 LAMANE Bakery & Cafe. All rights reserved.</p>
           <div class="flex flex-wrap gap-6">
-            <a href="#" class="hover:text-accent transition">Privacy Policy</a>
-            <a href="#" class="hover:text-accent transition">Terms of Service</a>
-            <a href="#" class="hover:text-accent transition">Cookies</a>
+            <a href="#" class="hover:text-amber-400 transition">Privacy Policy</a>
+            <a href="#" class="hover:text-amber-400 transition">Terms of Service</a>
+            <a href="#" class="hover:text-amber-400 transition">Cookies</a>
           </div>
         </div>
       </div>
