@@ -1,5 +1,5 @@
 <template>
-  <div :class="isAdmin ? 'min-h-screen' : 'min-h-screen flex flex-col'">
+  <div :class="[isAdmin ? 'min-h-screen' : 'min-h-screen flex flex-col', themeStore.isDark ? 'dark' : 'light']">
     <Navigation v-if="!isAdmin" />
     <PromoPopup v-if="!isAdmin" />
     <main :class="{ 'flex-grow': !isAdmin }">
@@ -11,13 +11,19 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/auth'
+import { useThemeStore } from '@/stores/theme'
 import Navigation from '@/components/layout/Navigation.vue'
 import Footer from '@/components/layout/Footer.vue'
 import ChatWidget from '@/components/ChatWidget.vue'
 import PromoPopup from '@/components/ui/PromoPopup.vue'
 
 const authStore = useAuthStore()
+const themeStore = useThemeStore()
 const isAdmin = computed(() => authStore.user?.role === 'admin')
+
+onMounted(() => {
+  themeStore.initializeTheme()
+})
 </script>
