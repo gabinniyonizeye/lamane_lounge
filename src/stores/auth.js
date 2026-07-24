@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import axios from 'axios'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+const DEMO_MODE = true // Set to false when backend is ready
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref(null)
@@ -15,38 +16,49 @@ export const useAuthStore = defineStore('auth', () => {
       if (savedToken) {
         token.value = savedToken
         user.value = JSON.parse(localStorage.getItem('user') || 'null')
-        try {
-          const response = await axios.get(`${API_URL}/auth/me`, {
-            headers: { Authorization: `Bearer ${savedToken}` },
-          })
-          user.value = response.data
-          localStorage.setItem('user', JSON.stringify(user.value))
-        } catch {
-          logout()
-        }
       }
     }
   }
 
   const register = async (name, email, password, phone, address) => {
     try {
-      const response = await axios.post(`${API_URL}/auth/register`, {
-        name,
-        email,
-        password,
-        phone,
-        address,
-      })
+      if (DEMO_MODE) {
+        // Demo mode: save to localStorage
+        const demoUser = {
+          _id: Date.now().toString(),
+          name,
+          email,
+          phone,
+          address,
+          createdAt: new Date().toISOString(),
+        }
+        const demoToken = 'demo_token_' + Date.now()
+        
+        token.value = demoToken
+        user.value = demoUser
+        
+        localStorage.setItem('token', demoToken)
+        localStorage.setItem('user', JSON.stringify(demoUser))
+        
+        return { token: demoToken, user: demoUser }
+      } else {
+        // Production mode: use backend
+        const response = await axios.post(`${API_URL}/auth/register`, {
+          name,
+          email,
+          password,
+          phone,
+          address,
+        })
 
-      token.value = response.data.token
-      user.value = response.data.user
+        token.value = response.data.token
+        user.value = response.data.user
 
-      if (typeof window !== 'undefined') {
         localStorage.setItem('token', token.value)
         localStorage.setItem('user', JSON.stringify(user.value))
-      }
 
-      return response.data
+        return response.data
+      }
     } catch (error) {
       const errorMsg = error.response?.data?.message || error.message || 'Registration failed'
       throw new Error(errorMsg)
@@ -55,21 +67,42 @@ export const useAuthStore = defineStore('auth', () => {
 
   const login = async (email, password, loginType = 'customer') => {
     try {
-      const response = await axios.post(`${API_URL}/auth/login`, {
-        email,
-        password,
-        loginType,
-      })
+      if (DEMO_MODE) {
+        // Demo mode: accept any email/password
+        const demoUser = {
+          _id: Date.now().toString(),
+          name: email.split('@')[0],
+          email,
+          phone: '+250788000000',
+          address: 'Kigali, Rwanda',
+          role: loginType,
+          createdAt: new Date().toISOString(),
+        }
+        const demoToken = 'demo_token_' + Date.now()
+        
+        token.value = demoToken
+        user.value = demoUser
+        
+        localStorage.setItem('token', demoToken)
+        localStorage.setItem('user', JSON.stringify(demoUser))
+        
+        return { token: demoToken, user: demoUser }
+      } else {
+        // Production mode: use backend
+        const response = await axios.post(`${API_URL}/auth/login`, {
+          email,
+          password,
+          loginType,
+        })
 
-      token.value = response.data.token
-      user.value = response.data.user
+        token.value = response.data.token
+        user.value = response.data.user
 
-      if (typeof window !== 'undefined') {
         localStorage.setItem('token', token.value)
         localStorage.setItem('user', JSON.stringify(user.value))
-      }
 
-      return response.data
+        return response.data
+      }
     } catch (error) {
       const errorMsg = error.response?.data?.message || error.message || 'Login failed'
       throw new Error(errorMsg)
