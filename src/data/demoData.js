@@ -1,34 +1,49 @@
 export const demoProducts = [
-  // Coffee
-  { _id: '1', name: 'Espresso', price: 2500, category: 'coffee', description: 'Strong espresso shot', image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b3f7?w=300&h=300&fit=crop', availability: true, rating: 4.5, reviews: 12 },
-  { _id: '2', name: 'Cappuccino', price: 4000, category: 'coffee', description: 'Creamy cappuccino', image: 'https://images.unsplash.com/photo-1578432291840-8d1c51dc1cac?w=300&h=300&fit=crop', availability: true, rating: 4.8, reviews: 25 },
-  { _id: '3', name: 'Latte', price: 4500, category: 'coffee', description: 'Smooth latte', image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=300&h=300&fit=crop', availability: true, rating: 4.6, reviews: 18 },
+  // Coffee - from menu
+  { _id: '1', name: 'Espresso (Single shot)', price: 1500, category: 'coffee', description: 'Strong espresso shot', image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b3f7?w=300&h=300&fit=crop', availability: true, rating: 4.5, reviews: 12 },
+  { _id: '2', name: 'Cappuccino', price: 3500, category: 'coffee', description: 'Creamy cappuccino', image: 'https://images.unsplash.com/photo-1578432291840-8d1c51dc1cac?w=300&h=300&fit=crop', availability: true, rating: 4.8, reviews: 25 },
+  { _id: '3', name: 'Cafe Latte', price: 3500, category: 'coffee', description: 'Smooth latte with steamed milk', image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=300&h=300&fit=crop', availability: true, rating: 4.6, reviews: 18 },
   { _id: '4', name: 'Americano', price: 3000, category: 'coffee', description: 'Classic americano', image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b3f7?w=300&h=300&fit=crop', availability: true, rating: 4.4, reviews: 15 },
+  { _id: '5', name: 'Cafe Mocha', price: 4000, category: 'coffee', description: 'Espresso with sweet chocolate and steamed milk', image: 'https://images.unsplash.com/photo-1578432291840-8d1c51dc1cac?w=300&h=300&fit=crop', availability: true, rating: 4.7, reviews: 22 },
   
-  // Pastries
-  { _id: '5', name: 'Croissant', price: 3500, category: 'pastries', description: 'Buttery croissant', image: 'https://images.unsplash.com/photo-1585518419759-8b0e5fb91b4a?w=300&h=300&fit=crop', availability: true, rating: 4.7, reviews: 22 },
-  { _id: '6', name: 'Danish Pastry', price: 4000, category: 'pastries', description: 'Sweet danish pastry', image: 'https://images.unsplash.com/photo-1585518419759-8b0e5fb91b4a?w=300&h=300&fit=crop', availability: true, rating: 4.5, reviews: 14 },
-  { _id: '7', name: 'Muffin', price: 3000, category: 'pastries', description: 'Chocolate muffin', image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=300&fit=crop', availability: true, rating: 4.6, reviews: 20 },
+  // Snacks - from menu
+  { _id: '6', name: 'Lamane Meatballs', price: 6500, category: 'snacks', description: '1 piece, French fries & Salad', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561404?w=300&h=300&fit=crop', availability: true, rating: 4.7, reviews: 20 },
+  { _id: '7', name: 'Lamane Sambusas', price: 6500, category: 'snacks', description: '1 piece, French fries & Salad', image: 'https://images.unsplash.com/photo-1599599810694-b5ac4dd64b11?w=300&h=300&fit=crop', availability: true, rating: 4.6, reviews: 18 },
+  { _id: '8', name: 'Croissant', price: 1500, category: 'snacks', description: 'Buttery croissant', image: 'https://images.unsplash.com/photo-1585518419759-8b0e5fb91b4a?w=300&h=300&fit=crop', availability: true, rating: 4.8, reviews: 24 },
+  { _id: '9', name: 'Muffin', price: 600, category: 'snacks', description: 'Delicious muffin', image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=300&fit=crop', availability: true, rating: 4.5, reviews: 16 },
   
-  // Cakes
-  { _id: '8', name: 'Chocolate Cake', price: 15000, category: 'cakes', description: 'Rich chocolate cake', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=300&fit=crop', availability: true, rating: 4.9, reviews: 35 },
-  { _id: '9', name: 'Vanilla Cake', price: 12000, category: 'cakes', description: 'Classic vanilla cake', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=300&fit=crop', availability: true, rating: 4.7, reviews: 28 },
-  { _id: '10', name: 'Strawberry Cake', price: 14000, category: 'cakes', description: 'Fresh strawberry cake', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=300&fit=crop', availability: true, rating: 4.8, reviews: 32 },
+  // Breakfast - from menu
+  { _id: '10', name: 'Plain Omelette', price: 4000, category: 'breakfast', description: 'Classic plain omelette', image: 'https://images.unsplash.com/photo-1585238341710-4b4e6cefc068?w=300&h=300&fit=crop', availability: true, rating: 4.6, reviews: 19 },
+  { _id: '11', name: 'Fried Eggs', price: 3000, category: 'breakfast', description: '3 fried eggs', image: 'https://images.unsplash.com/photo-1585238341710-4b4e6cefc068?w=300&h=300&fit=crop', availability: true, rating: 4.5, reviews: 17 },
+  { _id: '12', name: 'Spanish Omelette', price: 4500, category: 'breakfast', description: '3 eggs, green pepper, tomato, and onion', image: 'https://images.unsplash.com/photo-1585238341710-4b4e6cefc068?w=300&h=300&fit=crop', availability: true, rating: 4.7, reviews: 21 },
   
-  // Bread
-  { _id: '11', name: 'Whole Wheat Bread', price: 5000, category: 'bread', description: 'Healthy whole wheat bread', image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300&h=300&fit=crop', availability: true, rating: 4.5, reviews: 16 },
-  { _id: '12', name: 'White Bread', price: 4500, category: 'bread', description: 'Soft white bread', image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300&h=300&fit=crop', availability: true, rating: 4.4, reviews: 13 },
+  // Burgers - from menu
+  { _id: '13', name: 'Lamané Beef Burger', price: 5000, category: 'burgers', description: 'Beef, Cheese, Lettuce, Tomatoes', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&h=300&fit=crop', availability: true, rating: 4.8, reviews: 28 },
+  { _id: '14', name: 'Chicken Burger', price: 5000, category: 'burgers', description: 'Chicken, Lettuce, Tomatoes & Onions', image: 'https://images.unsplash.com/photo-1562547256-c8e1b4abf947?w=300&h=300&fit=crop', availability: true, rating: 4.7, reviews: 23 },
+  { _id: '15', name: 'Fish Burger', price: 5000, category: 'burgers', description: 'Fish, Cheese, Lettuce, Tomatoes', image: 'https://images.unsplash.com/photo-1571407970349-bc2c40e1b272?w=300&h=300&fit=crop', availability: true, rating: 4.6, reviews: 20 },
   
-  // Drinks
-  { _id: '13', name: 'Iced Coffee', price: 3500, category: 'drinks', description: 'Refreshing iced coffee', image: 'https://images.unsplash.com/photo-1517668808822-9ebb02ae2a0e?w=300&h=300&fit=crop', availability: true, rating: 4.6, reviews: 19 },
-  { _id: '14', name: 'Hot Chocolate', price: 3500, category: 'drinks', description: 'Warm hot chocolate', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=300&fit=crop', availability: true, rating: 4.7, reviews: 21 },
-  { _id: '15', name: 'Smoothie', price: 4500, category: 'drinks', description: 'Fresh fruit smoothie', image: 'https://images.unsplash.com/photo-1590080876-a371a6b6d7c5?w=300&h=300&fit=crop', availability: true, rating: 4.8, reviews: 26 },
+  // Pizza - from menu
+  { _id: '16', name: 'Lamané Pizza', price: 10000, category: 'pizza', description: 'Special Lamané pizza', image: 'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=300&h=300&fit=crop', availability: true, rating: 4.9, reviews: 35 },
+  { _id: '17', name: 'Margarita Pizza', price: 9000, category: 'pizza', description: 'Classic margarita pizza', image: 'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=300&h=300&fit=crop', availability: true, rating: 4.8, reviews: 32 },
+  { _id: '18', name: 'Chicken Pizza', price: 9000, category: 'pizza', description: 'Delicious chicken pizza', image: 'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=300&h=300&fit=crop', availability: true, rating: 4.7, reviews: 29 },
+  
+  // Desserts - from menu
+  { _id: '19', name: 'Lamane Chocolate', price: 3500, category: 'desserts', description: 'Rich lamane chocolate', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=300&fit=crop', availability: true, rating: 4.8, reviews: 26 },
+  { _id: '20', name: 'French Toast', price: 3500, category: 'desserts', description: 'Delicious french toast', image: 'https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=300&h=300&fit=crop', availability: true, rating: 4.7, reviews: 24 },
+  { _id: '21', name: 'Fruits Plate', price: 7000, category: 'desserts', description: 'Fresh fruits plate', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&h=300&fit=crop', availability: true, rating: 4.6, reviews: 18 },
+  
+  // Drinks - from menu
+  { _id: '22', name: 'Pineapple Juice', price: 5000, category: 'drinks', description: 'Fresh pineapple juice', image: 'https://images.unsplash.com/photo-1590080876-a371a6b6d7c5?w=300&h=300&fit=crop', availability: true, rating: 4.7, reviews: 21 },
+  { _id: '23', name: 'Mango Juice', price: 6000, category: 'drinks', description: 'Fresh mango juice', image: 'https://images.unsplash.com/photo-1590080876-a371a6b6d7c5?w=300&h=300&fit=crop', availability: true, rating: 4.8, reviews: 25 },
+  { _id: '24', name: 'Mojito', price: 7000, category: 'drinks', description: 'Refreshing mojito', image: 'https://images.unsplash.com/photo-1590080876-a371a6b6d7c5?w=300&h=300&fit=crop', availability: true, rating: 4.9, reviews: 30 },
 ]
 
 export const demoCategories = [
   { _id: '1', name: 'coffee', description: 'Fresh brewed coffee' },
-  { _id: '2', name: 'pastries', description: 'Delicious pastries' },
-  { _id: '3', name: 'cakes', description: 'Custom cakes' },
-  { _id: '4', name: 'bread', description: 'Fresh bread' },
-  { _id: '5', name: 'drinks', description: 'Hot and cold drinks' },
+  { _id: '2', name: 'snacks', description: 'Delicious snacks' },
+  { _id: '3', name: 'breakfast', description: 'Breakfast items' },
+  { _id: '4', name: 'burgers', description: 'Tasty burgers' },
+  { _id: '5', name: 'pizza', description: 'Fresh pizza' },
+  { _id: '6', name: 'desserts', description: 'Sweet desserts' },
+  { _id: '7', name: 'drinks', description: 'Hot and cold drinks' },
 ]

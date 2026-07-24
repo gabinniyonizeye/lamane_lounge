@@ -375,10 +375,10 @@ const loading = ref(false)
 const steps = ['Size', 'Flavor', 'Filling', 'Color', 'Message', 'Photo', 'Date/Time', 'Contact']
 
 const sizes = [
-  { id: '6', name: '6" Cake', servings: '8-10', price: 25 },
-  { id: '8', name: '8" Cake', servings: '12-15', price: 35 },
-  { id: '10', name: '10" Cake', servings: '20-25', price: 45 },
-  { id: '12', name: '12" Cake', servings: '30-40', price: 55 },
+  { id: '6', name: '6" Cake', servings: '8-10', price: 25000 },
+  { id: '8', name: '8" Cake', servings: '12-15', price: 35000 },
+  { id: '10', name: '10" Cake', servings: '20-25', price: 45000 },
+  { id: '12', name: '12" Cake', servings: '30-40', price: 55000 },
 ]
 
 const flavors = [
@@ -391,9 +391,9 @@ const flavors = [
 
 const fillings = [
   { id: 'buttercream', name: 'Buttercream', description: 'Classic buttercream', price: 0 },
-  { id: 'creamcheese', name: 'Cream Cheese', description: 'Tangy cream cheese', price: 3 },
-  { id: 'ganache', name: 'Ganache', description: 'Rich chocolate ganache', price: 5 },
-  { id: 'fruit', name: 'Fruit', description: 'Fresh fruit filling', price: 4 },
+  { id: 'creamcheese', name: 'Cream Cheese', description: 'Tangy cream cheese', price: 3000 },
+  { id: 'ganache', name: 'Ganache', description: 'Rich chocolate ganache', price: 5000 },
+  { id: 'fruit', name: 'Fruit', description: 'Fresh fruit filling', price: 4000 },
 ]
 
 const colors = ['#FFFFFF', '#FFB6C1', '#FFD700', '#87CEEB', '#DDA0DD', '#F08080', '#98D8C8']
