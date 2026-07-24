@@ -366,7 +366,6 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import apiClient from '@/utils/api'
 
 const router = useRouter()
 const currentStep = ref(0)
@@ -470,6 +469,7 @@ const submitCake = async () => {
   loading.value = true
   try {
     const cakeData = {
+      _id: Date.now().toString(),
       size: form.value.size,
       flavor: form.value.flavor,
       filling: form.value.filling,
@@ -484,14 +484,17 @@ const submitCake = async () => {
         phone: form.value.phone,
       },
       specialRequests: form.value.specialRequests,
+      createdAt: new Date().toISOString(),
     }
 
-    const response = await apiClient.post('/custom-cakes', cakeData)
-    const orderId = response.data._id
+    // Save to localStorage
+    const orders = JSON.parse(localStorage.getItem('customCakeOrders') || '[]')
+    orders.push(cakeData)
+    localStorage.setItem('customCakeOrders', JSON.stringify(orders))
     
     router.push({
       name: 'CakeConfirmation',
-      params: { orderId },
+      params: { orderId: cakeData._id },
       query: { email: form.value.email },
     })
   } catch (error) {

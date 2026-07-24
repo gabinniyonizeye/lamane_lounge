@@ -372,11 +372,8 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import axios from 'axios'
 import { useCartStore } from '@/stores/cart'
 import { useAuthStore } from '@/stores/auth'
-
-const API_URL = 'http://localhost:5000/api'
 
 const router = useRouter()
 const cartStore = useCartStore()
@@ -427,6 +424,7 @@ const placeOrder = async () => {
   loading.value = true
   try {
     const orderData = {
+      _id: Date.now().toString(),
       items: cartStore.items,
       total: orderTotal.value,
       status: 'pending',
@@ -439,24 +437,21 @@ const placeOrder = async () => {
         phone: form.value.phone,
       },
       instructions: form.value.instructions,
+      createdAt: new Date().toISOString(),
     }
 
-    // Send to backend API
-    const response = await axios.post(`${API_URL}/orders`, orderData, {
-      headers: {
-        Authorization: `Bearer ${authStore.token}`
-      }
-    })
+    // Save to localStorage
+    const orders = JSON.parse(localStorage.getItem('orders') || '[]')
+    orders.push(orderData)
+    localStorage.setItem('orders', JSON.stringify(orders))
 
-    const orderId = response.data._id
-    
     // Clear cart
     cartStore.clearCart()
 
     // Redirect to confirmation
     router.push({
       name: 'OrderConfirmation',
-      params: { orderId },
+      params: { orderId: orderData._id },
       query: {
         email: form.value.email,
         deliveryType: form.value.deliveryType,
