@@ -1,41 +1,63 @@
 <template>
-  <div class="card overflow-hidden">
-    <!-- Image -->
-    <router-link :to="`/product/${product._id}`" class="relative h-48 bg-gray-200 overflow-hidden group block">
+  <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 hover:border-primary/30">
+    <!-- Image Container -->
+    <router-link :to="`/product/${product._id}`" class="relative h-56 bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden block">
       <img
         :src="imageSrc"
         :alt="`Photo of ${product.name}`"
         @error="imageFailed = true"
         loading="lazy"
         decoding="async"
-        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
       />
-      <div v-if="product.availability === false" class="absolute inset-0 bg-black/50 flex items-center justify-center">
-        <span class="text-white font-bold">Out of Stock</span>
+      
+      <!-- Badge -->
+      <div v-if="product.availability === false" class="absolute inset-0 bg-black/60 flex items-center justify-center backdrop-blur-sm">
+        <span class="text-white font-bold text-lg">Out of Stock</span>
+      </div>
+      
+      <!-- Rating Badge -->
+      <div v-if="product.rating" class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 flex items-center gap-1 shadow-lg">
+        <span class="text-yellow-400">★</span>
+        <span class="text-sm font-bold text-dark">{{ product.rating }}</span>
       </div>
     </router-link>
 
     <!-- Content -->
-    <div class="p-4">
+    <div class="p-5">
+      <!-- Category Badge -->
+      <div class="mb-3">
+        <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full capitalize">
+          {{ product.category }}
+        </span>
+      </div>
+
+      <!-- Title -->
       <router-link :to="`/product/${product._id}`" class="hover:text-primary transition">
-        <h3 class="font-bold text-lg mb-2 line-clamp-2">{{ product.name }}</h3>
+        <h3 class="font-bold text-lg mb-2 line-clamp-2 text-dark">{{ product.name }}</h3>
       </router-link>
+
+      <!-- Description -->
+      <p class="text-sm text-gray-600 mb-4 line-clamp-2">{{ product.description }}</p>
       
-      <!-- Rating -->
-      <div class="flex items-center gap-2 mb-3">
-        <div class="flex text-accent">
-          <span v-for="i in 5" :key="i" class="text-sm">
+      <!-- Rating & Reviews -->
+      <div class="flex items-center gap-2 mb-4">
+        <div class="flex text-yellow-400">
+          <span v-for="i in 5" :key="i" class="text-xs">
             {{ i <= Math.round(product.rating || 4) ? '★' : '☆' }}
           </span>
         </div>
-        <span class="text-sm text-gray-600">({{ product.reviews || 0 }})</span>
+        <span class="text-xs text-gray-500">({{ product.reviews || 0 }} reviews)</span>
       </div>
 
       <!-- Price -->
-      <div class="flex items-center justify-between mb-4">
-        <span class="text-2xl font-bold text-primary">{{ Number(product.price).toLocaleString() }} RWF</span>
+      <div class="flex items-center justify-between mb-4 pb-4 border-t border-slate-200">
+        <div>
+          <span class="text-3xl font-bold text-primary">{{ Number(product.price).toLocaleString() }}</span>
+          <span class="text-sm text-gray-600 ml-1">RWF</span>
+        </div>
         <span v-if="product.originalPrice" class="text-sm text-gray-500 line-through">
-          {{ Number(product.originalPrice).toLocaleString() }} RWF
+          {{ Number(product.originalPrice).toLocaleString() }}
         </span>
       </div>
 
@@ -43,9 +65,10 @@
       <button
         @click="addToCart"
         :disabled="product.availability === false"
-        class="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+        class="w-full py-3 bg-gradient-to-r from-primary to-primary/80 text-white font-bold rounded-xl hover:shadow-lg hover:from-primary/90 hover:to-primary/70 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2"
       >
-        Order Now · Free Delivery
+        <span>🛒</span>
+        <span>Order Now</span>
       </button>
     </div>
   </div>
@@ -54,6 +77,7 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { defaultMenuImage, menuImageFor } from '@/utils/menuImages'
+
 const props = defineProps({
   product: {
     type: Object,
