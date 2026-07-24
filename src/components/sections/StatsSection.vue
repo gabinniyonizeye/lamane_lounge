@@ -1,5 +1,5 @@
 <template>
-  <section class="py-16 bg-gradient-to-br from-gray-900 to-black text-white">
+  <section class="py-16 bg-gradient-to-br from-gray-900 to-black dark:from-black dark:to-gray-900 text-white">
     <div class="container">
       <div class="rounded-[2rem] border border-amber-500/20 bg-amber-500/5 p-8 shadow-2xl shadow-black/50 animate-fade-in">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -1,5 +1,5 @@
 <template>
-  <section class="py-16 bg-white">
+  <section class="py-16 bg-white dark:bg-black">
     <div class="container">
       <h2 class="section-title">Featured Products</h2>
 
