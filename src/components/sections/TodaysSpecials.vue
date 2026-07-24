@@ -1,42 +1,42 @@
 <template>
-  <section class="py-16 bg-gradient-to-r from-primary to-secondary">
+  <section class="py-16 bg-gradient-to-r from-amber-500 to-amber-600 dark:from-gray-900 dark:to-black">
     <div class="container">
       <h2 class="text-4xl font-bold text-center mb-12 text-white">Today's Specials</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-        <div v-for="special in specials" :key="special.id" class="bg-white rounded-lg overflow-hidden shadow-lg">
+        <div v-for="special in specials" :key="special.id" class="bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg border border-gray-200 dark:border-amber-500/20">
           <!-- Image -->
-          <div class="relative h-48 bg-gray-200 overflow-hidden">
+          <div class="relative h-48 bg-gray-200 dark:bg-gray-800 overflow-hidden">
             <img
               :src="special.image"
               :alt="special.title"
               class="w-full h-full object-cover"
             />
-            <div class="absolute top-4 right-4 bg-accent text-dark px-4 py-2 rounded-full font-bold">
+            <div class="absolute top-4 right-4 bg-amber-500 text-white px-4 py-2 rounded-full font-bold">
               {{ special.discount }}% OFF
             </div>
           </div>
 
           <!-- Content -->
           <div class="p-6">
-            <h3 class="text-2xl font-bold mb-2 text-dark">{{ special.title }}</h3>
-            <p class="text-gray-600 mb-4">{{ special.description }}</p>
+            <h3 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">{{ special.title }}</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">{{ special.description }}</p>
 
             <!-- Countdown Timer -->
-            <div class="bg-gray-100 rounded-lg p-4 mb-4">
-              <p class="text-sm text-gray-600 mb-2">Offer ends in:</p>
+            <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 mb-4">
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Offer ends in:</p>
               <div class="flex gap-4 justify-center">
                 <div class="text-center">
-                  <div class="text-2xl font-bold text-primary">{{ timeLeft.hours }}</div>
-                  <div class="text-xs text-gray-600">Hours</div>
+                  <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">{{ timeLeft.hours }}</div>
+                  <div class="text-xs text-gray-600 dark:text-gray-400">Hours</div>
                 </div>
                 <div class="text-center">
-                  <div class="text-2xl font-bold text-primary">{{ timeLeft.minutes }}</div>
-                  <div class="text-xs text-gray-600">Minutes</div>
+                  <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">{{ timeLeft.minutes }}</div>
+                  <div class="text-xs text-gray-600 dark:text-gray-400">Minutes</div>
                 </div>
                 <div class="text-center">
-                  <div class="text-2xl font-bold text-primary">{{ timeLeft.seconds }}</div>
-                  <div class="text-xs text-gray-600">Seconds</div>
+                  <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">{{ timeLeft.seconds }}</div>
+                  <div class="text-xs text-gray-600 dark:text-gray-400">Seconds</div>
                 </div>
               </div>
             </div>
@@ -49,12 +49,12 @@
       </div>
 
       <!-- More Specials -->
-      <div class="bg-white rounded-lg p-8">
-        <h3 class="text-2xl font-bold mb-6 text-dark">More Offers</h3>
+      <div class="bg-white dark:bg-gray-900 rounded-lg p-8 border border-gray-200 dark:border-amber-500/20">
+        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">More Offers</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div v-for="offer in moreOffers" :key="offer.id" class="border-l-4 border-accent pl-4">
-            <p class="font-bold text-lg text-dark mb-2">{{ offer.title }}</p>
-            <p class="text-gray-600 text-sm">{{ offer.description }}</p>
+          <div v-for="offer in moreOffers" :key="offer.id" class="border-l-4 border-amber-500 pl-4">
+            <p class="font-bold text-lg text-gray-900 dark:text-white mb-2">{{ offer.title }}</p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">{{ offer.description }}</p>
           </div>
         </div>
       </div>

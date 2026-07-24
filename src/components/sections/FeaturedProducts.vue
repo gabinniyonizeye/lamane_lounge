@@ -1,11 +1,11 @@
 <template>
-  <section class="py-16 bg-gray-50">
+  <section class="py-16 bg-white dark:bg-black">
     <div class="container">
       <h2 class="section-title">Featured Products</h2>
 
       <div v-if="loading" class="text-center py-12">
         <div class="inline-block animate-spin">
-          <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-8 h-8 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
           </svg>
         </div>
