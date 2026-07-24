@@ -68,7 +68,27 @@ export const useAuthStore = defineStore('auth', () => {
   const login = async (email, password, loginType = 'customer') => {
     try {
       if (DEMO_MODE) {
-        // Demo mode: accept any email/password
+        // Demo mode: check for admin credentials
+        if (loginType === 'admin' && email === 'admin@lamane.com' && password === 'admin123') {
+          const adminUser = {
+            _id: 'admin_001',
+            name: 'Administrator',
+            email: 'admin@lamane.com',
+            role: 'admin',
+            createdAt: new Date().toISOString(),
+          }
+          const demoToken = 'admin_token_' + Date.now()
+          
+          token.value = demoToken
+          user.value = adminUser
+          
+          localStorage.setItem('token', demoToken)
+          localStorage.setItem('user', JSON.stringify(adminUser))
+          
+          return { token: demoToken, user: adminUser }
+        }
+        
+        // Demo mode: accept any email/password for customer
         const demoUser = {
           _id: Date.now().toString(),
           name: email.split('@')[0],
