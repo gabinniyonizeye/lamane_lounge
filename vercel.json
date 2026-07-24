@@ -5,6 +5,10 @@
     {
       "source": "/api/:path*",
       "destination": "https://strong-miracle.railway.app/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "env": {
