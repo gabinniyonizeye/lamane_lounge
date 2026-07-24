@@ -1,7 +1,7 @@
 <template>
-  <div class="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-amber-500/20 hover:border-amber-500/30">
+  <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-amber-500/30">
     <!-- Image Container -->
-    <router-link :to="`/product/${product._id}`" class="relative h-56 bg-gradient-to-br from-gray-100 dark:from-gray-800 to-gray-200 dark:to-gray-700 overflow-hidden block">
+    <router-link :to="`/product/${product._id}`" class="relative h-56 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden block">
       <img
         :src="imageSrc"
         :alt="`Photo of ${product.name}`"
@@ -17,9 +17,9 @@
       </div>
       
       <!-- Rating Badge -->
-      <div v-if="product.rating" class="absolute top-4 right-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-full px-3 py-1 flex items-center gap-1 shadow-lg">
+      <div v-if="product.rating" class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 flex items-center gap-1 shadow-lg">
         <span class="text-yellow-400">★</span>
-        <span class="text-sm font-bold text-gray-900 dark:text-white">{{ product.rating }}</span>
+        <span class="text-sm font-bold text-gray-900">{{ product.rating }}</span>
       </div>
     </router-link>
 
@@ -27,18 +27,18 @@
     <div class="p-5">
       <!-- Category Badge -->
       <div class="mb-3">
-        <span class="inline-block px-3 py-1 bg-amber-500/10 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 text-xs font-bold rounded-full capitalize">
+        <span class="inline-block px-3 py-1 bg-amber-500/10 text-amber-700 text-xs font-bold rounded-full capitalize">
           {{ product.category }}
         </span>
       </div>
 
       <!-- Title -->
-      <router-link :to="`/product/${product._id}`" class="hover:text-amber-600 dark:hover:text-amber-400 transition">
-        <h3 class="font-bold text-lg mb-2 line-clamp-2 text-gray-900 dark:text-white">{{ product.name }}</h3>
+      <router-link :to="`/product/${product._id}`" class="hover:text-amber-600 transition">
+        <h3 class="font-bold text-lg mb-2 line-clamp-2 text-gray-900">{{ product.name }}</h3>
       </router-link>
 
       <!-- Description -->
-      <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">{{ product.description }}</p>
+      <p class="text-sm text-gray-600 mb-4 line-clamp-2">{{ product.description }}</p>
       
       <!-- Rating & Reviews -->
       <div class="flex items-center gap-2 mb-4">
@@ -47,16 +47,16 @@
             {{ i <= Math.round(product.rating || 4) ? '★' : '☆' }}
           </span>
         </div>
-        <span class="text-xs text-gray-500 dark:text-gray-500">({{ product.reviews || 0 }} reviews)</span>
+        <span class="text-xs text-gray-500">({{ product.reviews || 0 }} reviews)</span>
       </div>
 
       <!-- Price -->
-      <div class="flex items-center justify-between mb-4 pb-4 border-t border-gray-200 dark:border-amber-500/20">
+      <div class="flex items-center justify-between mb-4 pb-4 border-t border-gray-200">
         <div>
-          <span class="text-3xl font-bold text-amber-600 dark:text-amber-400">{{ Number(product.price).toLocaleString() }}</span>
-          <span class="text-sm text-gray-600 dark:text-gray-400 ml-1">RWF</span>
+          <span class="text-3xl font-bold text-amber-600">{{ Number(product.price).toLocaleString() }}</span>
+          <span class="text-sm text-gray-600 ml-1">RWF</span>
         </div>
-        <span v-if="product.originalPrice" class="text-sm text-gray-500 dark:text-gray-500 line-through">
+        <span v-if="product.originalPrice" class="text-sm text-gray-500 line-through">
           {{ Number(product.originalPrice).toLocaleString() }}
         </span>
       </div>
@@ -65,7 +65,7 @@
       <button
         @click="addToCart"
         :disabled="product.availability === false"
-        class="w-full py-3 bg-gradient-to-r from-amber-500 to-amber-600 dark:from-amber-600 dark:to-amber-700 text-white font-bold rounded-xl hover:shadow-lg hover:from-amber-600 hover:to-amber-700 dark:hover:from-amber-700 dark:hover:to-amber-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2"
+        class="w-full py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-bold rounded-xl hover:shadow-lg hover:from-amber-600 hover:to-amber-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2"
       >
         <span>🛒</span>
         <span>Order Now</span>
