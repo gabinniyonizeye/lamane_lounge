@@ -1,10 +1,10 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="min-h-screen bg-white dark:bg-black">
     <!-- Header -->
-    <div class="bg-white border-b">
+    <div class="bg-gradient-to-br from-amber-50 to-white dark:from-gray-900 dark:to-black border-b border-gray-200 dark:border-amber-500/20">
       <div class="container py-8">
-        <h1 class="text-4xl font-bold text-dark">Custom Cake Builder</h1>
-        <p class="text-gray-600 mt-2">Design your perfect cake</p>
+        <h1 class="text-4xl font-black text-gray-900 dark:text-white">Custom Cake Builder</h1>
+        <p class="text-gray-600 dark:text-gray-400 mt-2">Design your perfect cake</p>
       </div>
     </div>
 
@@ -33,16 +33,16 @@
           </div>
 
           <!-- Step 1: Size -->
-          <div v-if="currentStep === 0" class="bg-white rounded-lg p-8 mb-8">
-            <h2 class="text-2xl font-bold text-dark mb-6">Select Cake Size</h2>
+          <div v-if="currentStep === 0" class="bg-white dark:bg-gray-900 rounded-lg p-8 mb-8 border border-gray-200 dark:border-amber-500/20">
+            <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-6">Select Cake Size</h2>
             
             <form @submit.prevent="nextStep" class="space-y-4">
               <div class="grid grid-cols-2 gap-4">
-                <label v-for="size in sizes" :key="size.id" class="border-2 rounded-lg p-4 cursor-pointer" :class="form.size === size.id ? 'border-primary bg-primary/5' : 'border-gray-300'">
-                  <input v-model="form.size" type="radio" :value="size.id" class="w-4 h-4 text-primary" />
-                  <p class="font-semibold text-dark mt-2">{{ size.name }}</p>
-                  <p class="text-sm text-gray-600">{{ size.servings }} servings</p>
-                  <p class="text-lg font-bold text-primary mt-2">{{ size.price.toLocaleString() }} RWF</p>
+                <label v-for="size in sizes" :key="size.id" class="border-2 rounded-lg p-4 cursor-pointer bg-white dark:bg-gray-800" :class="form.size === size.id ? 'border-amber-500 dark:border-amber-400 bg-amber-50 dark:bg-amber-500/10' : 'border-gray-300 dark:border-gray-700'">
+                  <input v-model="form.size" type="radio" :value="size.id" class="w-4 h-4 text-amber-600" />
+                  <p class="font-semibold text-gray-900 dark:text-white mt-2">{{ size.name }}</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">{{ size.servings }} servings</p>
+                  <p class="text-lg font-bold text-amber-600 dark:text-amber-400 mt-2">{{ size.price.toLocaleString() }} RWF</p>
                 </label>
               </div>
 
@@ -306,55 +306,55 @@
           </div>
         </div>
 
-        <!-- Price Summary Sidebar -->
+          <!-- Price Summary Sidebar -->
         <div class="lg:col-span-1">
-          <div class="bg-white rounded-lg p-6 sticky top-24">
-            <h3 class="text-xl font-bold text-dark mb-6">Order Summary</h3>
+          <div class="bg-white dark:bg-gray-900 rounded-lg p-6 sticky top-24 border border-gray-200 dark:border-amber-500/20">
+            <h3 class="text-xl font-black text-gray-900 dark:text-white mb-6">Order Summary</h3>
 
-            <div class="space-y-3 mb-6 pb-6 border-b">
-              <div v-if="form.size" class="flex justify-between text-sm">
+            <div class="space-y-3 mb-6 pb-6 border-b border-gray-200 dark:border-amber-500/20">
+              <div v-if="form.size" class="flex justify-between text-sm text-gray-700 dark:text-gray-300">
                 <span>Size</span>
-                <span class="font-semibold">{{ getSizeLabel(form.size) }}</span>
+                <span class="font-semibold text-gray-900 dark:text-white">{{ getSizeLabel(form.size) }}</span>
               </div>
-              <div v-if="form.flavor" class="flex justify-between text-sm">
+              <div v-if="form.flavor" class="flex justify-between text-sm text-gray-700 dark:text-gray-300">
                 <span>Flavor</span>
-                <span class="font-semibold">{{ getFlavorLabel(form.flavor) }}</span>
+                <span class="font-semibold text-gray-900 dark:text-white">{{ getFlavorLabel(form.flavor) }}</span>
               </div>
-              <div v-if="form.filling" class="flex justify-between text-sm">
+              <div v-if="form.filling" class="flex justify-between text-sm text-gray-700 dark:text-gray-300">
                 <span>Filling</span>
-                <span class="font-semibold">{{ getFillingLabel(form.filling) }}</span>
+                <span class="font-semibold text-gray-900 dark:text-white">{{ getFillingLabel(form.filling) }}</span>
               </div>
-              <div v-if="form.pickupDate" class="flex justify-between text-sm">
+              <div v-if="form.pickupDate" class="flex justify-between text-sm text-gray-700 dark:text-gray-300">
                 <span>Pickup</span>
-                <span class="font-semibold">{{ form.pickupDate }}</span>
+                <span class="font-semibold text-gray-900 dark:text-white">{{ form.pickupDate }}</span>
               </div>
             </div>
 
             <div class="space-y-3">
-              <div class="flex justify-between text-gray-700">
+              <div class="flex justify-between text-gray-700 dark:text-gray-300">
                 <span>Base Price</span>
-                <span>{{ basePrice.toLocaleString() }} RWF</span>
+                <span class="text-gray-900 dark:text-white">{{ basePrice.toLocaleString() }} RWF</span>
               </div>
-              <div v-if="fillingPrice > 0" class="flex justify-between text-gray-700">
+              <div v-if="fillingPrice > 0" class="flex justify-between text-gray-700 dark:text-gray-300">
                 <span>Filling</span>
-                <span>+{{ fillingPrice.toLocaleString() }} RWF</span>
+                <span class="text-gray-900 dark:text-white">+{{ fillingPrice.toLocaleString() }} RWF</span>
               </div>
-              <div class="flex justify-between text-xl font-bold text-dark border-t pt-3">
+              <div class="flex justify-between text-xl font-black text-gray-900 dark:text-white border-t border-gray-200 dark:border-amber-500/20 pt-3">
                 <span>Total</span>
-                <span>{{ totalPrice.toLocaleString() }} RWF</span>
+                <span class="text-amber-600 dark:text-amber-400">{{ totalPrice.toLocaleString() }} RWF</span>
               </div>
             </div>
 
             <!-- Progress -->
-            <div class="mt-6 pt-6 border-t">
-              <p class="text-sm text-gray-600 mb-2">Progress</p>
-              <div class="w-full bg-gray-200 rounded-full h-2">
+            <div class="mt-6 pt-6 border-t border-gray-200 dark:border-amber-500/20">
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Progress</p>
+              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                 <div
-                  class="bg-primary h-2 rounded-full transition-all"
+                  class="bg-gradient-to-r from-amber-500 to-amber-600 h-2 rounded-full transition-all"
                   :style="{ width: `${(currentStep + 1) / steps.length * 100}%` }"
                 />
               </div>
-              <p class="text-xs text-gray-600 mt-2">Step {{ currentStep + 1 }} of {{ steps.length }}</p>
+              <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">Step {{ currentStep + 1 }} of {{ steps.length }}</p>
             </div>
           </div>
         </div>
