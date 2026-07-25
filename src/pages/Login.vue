@@ -1,55 +1,55 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center py-12 px-4">
-    <div class="w-full max-w-md">
-      <div class="bg-white rounded-lg shadow-xl p-8">
-        <!-- Header -->
-        <div class="text-center mb-8">
-          <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-white font-bold text-2xl">L</span>
+  <div class="bg-white dark:bg-black">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-amber-50 to-white dark:from-black dark:to-gray-900 py-20 border-b border-gray-200 dark:border-amber-500/20">
+      <div class="container max-w-4xl text-center">
+        <p class="text-amber-700 dark:text-amber-300 font-semibold tracking-widest uppercase text-sm mb-4">Welcome back</p>
+        <h1 class="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white mb-6">Sign In</h1>
+        <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">{{ adminMode ? 'Administrator access' : 'Access your account' }}</p>
+      </div>
+    </section>
+
+    <!-- Login Form -->
+    <section class="container py-16">
+      <div class="max-w-md mx-auto">
+        <form @submit.prevent="submitLogin" class="bg-gradient-to-br from-amber-50 to-white dark:from-gray-900 dark:to-black rounded-xl shadow-sm p-8 border border-gray-200 dark:border-amber-500/20 space-y-6">
+          <!-- Error Alert -->
+          <div v-if="errorMessage" class="p-4 bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/30 rounded-lg">
+            <p class="text-red-700 dark:text-red-400 text-sm font-medium">{{ errorMessage }}</p>
           </div>
-          <h1 class="text-3xl font-bold text-dark">LAMANE</h1>
-          <p class="text-gray-600 mt-2">{{ adminMode ? 'Administrator sign in' : 'Sign in to your account' }}</p>
-        </div>
 
-        <!-- Error Alert -->
-        <div v-if="errorMessage" class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-          <p class="text-red-700 text-sm font-medium">{{ errorMessage }}</p>
-        </div>
+          <!-- Success Alert -->
+          <div v-if="successMessage" class="p-4 bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/30 rounded-lg">
+            <p class="text-green-700 dark:text-green-400 text-sm font-medium">{{ successMessage }}</p>
+          </div>
 
-        <!-- Success Alert -->
-        <div v-if="successMessage" class="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-          <p class="text-green-700 text-sm font-medium">{{ successMessage }}</p>
-        </div>
-
-        <!-- Login Form -->
-        <form @submit.prevent="submitLogin" class="space-y-5">
-          <!-- Email Input -->
+          <!-- Email -->
           <div>
-            <label class="block text-sm font-semibold text-dark mb-2">Email Address</label>
-            <input
-              v-model="email"
-              type="email"
-              placeholder="Enter your email"
-              required
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
+            <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Email</label>
+            <input 
+              v-model="email" 
+              type="email" 
+              required 
+              class="w-full rounded-lg border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500" 
+              placeholder="your@email.com"
             />
           </div>
 
-          <!-- Password Input -->
+          <!-- Password -->
           <div>
-            <label class="block text-sm font-semibold text-dark mb-2">Password</label>
+            <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Password</label>
             <div class="relative">
-              <input
-                v-model="password"
-                :type="showPassword ? 'text' : 'password'"
-                placeholder="Enter your password"
-                required
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition pr-12"
+              <input 
+                v-model="password" 
+                :type="showPassword ? 'text' : 'password'" 
+                required 
+                class="w-full rounded-lg border border-gray-300 dark:border-amber-500/30 bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500 pr-12" 
+                placeholder="••••••••"
               />
               <button
                 type="button"
                 @click="showPassword = !showPassword"
-                class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition"
+                class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
               >
                 <svg v-if="!showPassword" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -63,62 +63,58 @@
             </div>
           </div>
 
-          <p v-if="adminMode" class="text-sm bg-amber-50 border border-amber-200 text-amber-900 rounded-lg p-3">Administrator access is protected. Enter your admin email and password to manage the business.</p>
+          <!-- Admin Note -->
+          <p v-if="adminMode" class="text-xs bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 text-amber-900 dark:text-amber-300 rounded p-3">
+            Admin access only. Use admin credentials to proceed.
+          </p>
 
           <!-- Submit Button -->
-          <button
-            type="submit"
+          <button 
+            type="submit" 
             :disabled="isLoading"
-            class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed mt-6"
+            class="w-full inline-flex items-center justify-center px-6 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:from-amber-600 hover:to-amber-700 disabled:opacity-50 text-sm"
           >
-            <span v-if="!isLoading">{{ adminMode ? 'Sign In as Admin' : 'Sign In' }}</span>
-            <span v-else class="flex items-center justify-center gap-2">
-              <svg class="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              Signing in...
-            </span>
+            {{ isLoading ? 'Signing in...' : (adminMode ? 'Admin Sign In' : 'Sign In') }}
           </button>
+
+          <!-- Admin Toggle Button -->
+          <button 
+            type="button"
+            @click="adminMode = !adminMode"
+            class="w-full px-6 py-2 rounded-lg border-2 border-gray-300 dark:border-amber-500/30 text-gray-900 dark:text-amber-300 font-bold hover:bg-gray-100 dark:hover:bg-amber-500/10 transition-all duration-300 text-sm"
+          >
+            {{ adminMode ? '← Back to Customer' : 'Admin Login →' }}
+          </button>
+
+          <!-- Divider -->
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gray-300 dark:border-gray-700"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-2 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-400">Don't have an account?</span>
+            </div>
+          </div>
+
+          <!-- Register Link -->
+          <router-link
+            to="/register"
+            class="block w-full text-center px-6 py-2 rounded-lg border-2 border-amber-500 text-amber-700 dark:text-amber-300 font-bold hover:bg-amber-50 dark:hover:bg-amber-500/10 transition-all duration-300 text-sm"
+          >
+            Create Account
+          </router-link>
         </form>
 
-        <button
-          type="button"
-          @click="selectAdminLogin"
-          class="mt-4 w-full border-2 border-dark text-dark font-bold py-3 rounded-lg hover:bg-dark hover:text-white transition"
-        >
-          {{ adminMode ? 'Administrator Login Selected' : 'Login as Admin' }}
-        </button>
-        <button v-if="adminMode" type="button" @click="adminMode = false" class="mt-2 w-full text-sm text-gray-600 hover:text-primary">Return to customer login</button>
-
-        <!-- Divider -->
-        <div class="relative my-6">
-          <div class="absolute inset-0 flex items-center">
-            <div class="w-full border-t border-gray-300"></div>
-          </div>
-          <div class="relative flex justify-center text-sm">
-            <span class="px-2 bg-white text-gray-500">Don't have an account?</span>
-          </div>
-        </div>
-
-        <!-- Register Link -->
-        <router-link
-          to="/register"
-          class="block w-full text-center px-4 py-3 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition"
-        >
-          Create Account
-        </router-link>
-
         <!-- Demo Credentials -->
-        <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <p class="text-sm font-semibold text-blue-900 mb-3">Demo Credentials:</p>
-          <div class="space-y-2 text-sm text-blue-800">
+        <div class="mt-8 max-w-md mx-auto p-6 bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/30 rounded-xl">
+          <p class="font-semibold text-blue-900 dark:text-blue-300 mb-3">Demo Credentials:</p>
+          <div class="space-y-2 text-sm text-blue-800 dark:text-blue-400">
             <p><strong>Customer:</strong> demo@example.com / password123</p>
             <p><strong>Admin:</strong> admin@lamane.com / admin123</p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -138,14 +134,6 @@ const errorMessage = ref('')
 const successMessage = ref('')
 const adminMode = ref(false)
 
-const selectAdminLogin = () => {
-  adminMode.value = true
-  email.value = 'admin@lamane.com'
-  password.value = ''
-  errorMessage.value = ''
-  successMessage.value = ''
-}
-
 const submitLogin = async () => {
   errorMessage.value = ''
   successMessage.value = ''
@@ -153,21 +141,19 @@ const submitLogin = async () => {
 
   try {
     if (!email.value || !password.value) {
-      errorMessage.value = 'Please enter both email and password'
+      errorMessage.value = 'Please enter email and password'
       isLoading.value = false
       return
     }
 
     const result = await authStore.login(email.value, password.value, adminMode.value ? 'admin' : 'customer')
-    
     successMessage.value = 'Login successful! Redirecting...'
     
     setTimeout(() => {
-      router.push(result.user.role === 'admin' ? '/admin' : (router.currentRoute.value.query.redirect || '/'))
+      router.push(result.user.role === 'admin' ? '/admin' : '/')
     }, 1000)
   } catch (error) {
-    console.error('Login error:', error)
-    errorMessage.value = error.message || error.error || 'Login failed. Please check your credentials.'
+    errorMessage.value = error.message || 'Login failed. Please check your credentials.'
   } finally {
     isLoading.value = false
   }
